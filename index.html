@@ -1,0 +1,543 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bhoomi Solutions | Intelligent Agents. Autonomous Impact.</title>
+  <meta name="description" content="Bhoomi Solutions builds Agentic AI solutions that think, act, and deliver real-world autonomous outcomes across industries.">
+  <meta name="keywords" content="Agentic AI, AI Solutions, Autonomous AI Agents, Enterprise Automation, Bhoomi Solutions">
+  
+  <!-- Font Awesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='20' fill='%230052FF'/><path d='M30 30h40v15H30zM30 55h25v15H30z' fill='%2300C6FF'/></svg>">
+  
+  <!-- Stylesheet -->
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <!-- HEADER / NAVBAR -->
+  <header class="header" id="header">
+    <div class="container nav-container">
+      <a href="#home" class="logo">
+        <div class="logo-icon">
+          <img src="assets/images/bhoomi_logo.png" alt="Bhoomi Solutions Logo" class="brand-logo-img">
+        </div>
+        <div class="logo-text">
+          <span class="logo-title">BHOOMI</span>
+          <span class="logo-sub">SOLUTIONS</span>
+        </div>
+      </a>
+
+      <!-- Header Tabs (Navigation Links) -->
+      <ul class="nav-links" id="nav-links">
+        <li><a href="#home" class="nav-link active">Home</a></li>
+        <li><a href="#about" class="nav-link">About Us</a></li>
+        <li><a href="#solutions" class="nav-link">Solutions</a></li>
+        <li><a href="#industries" class="nav-link">Industries</a></li>
+        <li><a href="#projects" class="nav-link">Projects</a></li>
+        <li><a href="#why-us" class="nav-link">Why Us</a></li>
+        <li><a href="#contact" class="nav-link">Contact</a></li>
+      </ul>
+
+      <div class="nav-actions">
+        <button class="btn btn-outline btn-sm" onclick="openDomainGuideModal()">
+          <i class="fa-solid fa-globe"></i> Domain Setup
+        </button>
+        <a href="#contact" class="btn btn-primary btn-sm">Get in Touch</a>
+        <button class="mobile-toggle" id="mobile-toggle" aria-label="Toggle Menu">
+          <i class="fa-solid fa-bars"></i>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- HERO SECTION -->
+  <section class="hero" id="home">
+    <div class="container hero-grid">
+      <div class="hero-content">
+        <h1 class="hero-title">
+          Intelligent Agents. <br>
+          <span class="text-gradient">Autonomous Impact.</span>
+        </h1>
+        <p class="hero-subtitle">
+          Bhoomi Solutions builds Agentic AI solutions that think, act and deliver results across industries.
+        </p>
+        <div class="hero-cta">
+          <a href="#solutions" class="btn btn-primary">
+            Explore Solutions <i class="fa-solid fa-arrow-right"></i>
+          </a>
+          <button class="btn btn-outline" onclick="openDemoModal()">
+            <i class="fa-regular fa-circle-play"></i> Watch Demo
+          </button>
+        </div>
+      </div>
+
+      <!-- Hero Visual with Interactive AI Nodes -->
+      <div class="hero-visual-wrapper">
+        <img src="assets/images/hero_robot.jpg" alt="Bhoomi Solutions AI Robot Mascot" class="hero-mascot-img">
+        
+        <!-- Node 1: Understand -->
+        <div class="ai-node node-understand">
+          <div class="ai-node-icon"><i class="fa-regular fa-comments"></i></div>
+          <div class="ai-node-text">
+            <h5>Understand</h5>
+            <p>Natural Language Processing</p>
+          </div>
+        </div>
+
+        <!-- Node 2: Reason -->
+        <div class="ai-node node-reason">
+          <div class="ai-node-icon"><i class="fa-solid fa-brain"></i></div>
+          <div class="ai-node-text">
+            <h5>Reason</h5>
+            <p>Decision Making & Planning</p>
+          </div>
+        </div>
+
+        <!-- Node 3: Act -->
+        <div class="ai-node node-act">
+          <div class="ai-node-icon"><i class="fa-solid fa-bolt"></i></div>
+          <div class="ai-node-text">
+            <h5>Act</h5>
+            <p>Execute Tasks Autonomously</p>
+          </div>
+        </div>
+
+        <!-- Node 4: Learn -->
+        <div class="ai-node node-learn">
+          <div class="ai-node-icon"><i class="fa-solid fa-chart-line"></i></div>
+          <div class="ai-node-text">
+            <h5>Learn</h5>
+            <p>Continuous Improvement</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT SECTION (DARK NAVY THEME) -->
+  <section class="section-dark" id="about">
+    <div class="container about-grid">
+      <div class="about-content">
+        <h2 class="about-title">About Bhoomi Solutions</h2>
+        <div class="title-underline"></div>
+        <p class="about-description">
+          We are a self-driven business firm focused on creating Agentic AI solutions that empower organizations to automate complex workflows, enhance customer experiences and drive growth.
+        </p>
+
+        <div class="about-pillars">
+          <!-- Pillar 1 -->
+          <div class="pillar-card">
+            <div class="pillar-icon"><i class="fa-solid fa-rocket"></i></div>
+            <h4 class="pillar-title">Autonomous</h4>
+            <p class="pillar-text">Our AI agents work autonomously to deliver real-world outcomes.</p>
+          </div>
+          <!-- Pillar 2 -->
+          <div class="pillar-card">
+            <div class="pillar-icon"><i class="fa-solid fa-cubes"></i></div>
+            <h4 class="pillar-title">Scalable</h4>
+            <p class="pillar-text">Built to scale across industries and business functions.</p>
+          </div>
+          <!-- Pillar 3 -->
+          <div class="pillar-card">
+            <div class="pillar-icon"><i class="fa-solid fa-shield-halved"></i></div>
+            <h4 class="pillar-title">Reliable</h4>
+            <p class="pillar-text">Secure, accurate and aligned with your business goals.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="about-visual-container">
+        <img src="assets/images/about_chip.jpg" alt="Bhoomi Solutions Neural Chip Processor" class="about-chip-img">
+      </div>
+    </div>
+  </section>
+
+  <!-- SOLUTIONS & INDUSTRIES SECTION -->
+  <section class="section-light" id="solutions">
+    <div class="container">
+      <div class="section-header">
+        <span class="pill-badge">OUR SOLUTIONS</span>
+        <h2 class="section-title">Agentic AI for Every Industry</h2>
+        <p class="section-subtitle">Select an industry below to see how our custom autonomous agents automate complex workflows.</p>
+      </div>
+
+      <!-- Industry Tabs Navigation Switcher -->
+      <div class="tabs-navigation" id="industry-tabs">
+        <button class="tab-btn active" data-industry="customer-service">
+          <i class="fa-solid fa-headset"></i> Customer Service
+        </button>
+        <button class="tab-btn" data-industry="ecommerce">
+          <i class="fa-solid fa-cart-shopping"></i> E-commerce
+        </button>
+        <button class="tab-btn" data-industry="healthcare">
+          <i class="fa-solid fa-heart-pulse"></i> Healthcare
+        </button>
+        <button class="tab-btn" data-industry="finance">
+          <i class="fa-solid fa-landmark"></i> Finance
+        </button>
+        <button class="tab-btn" data-industry="manufacturing">
+          <i class="fa-solid fa-industry"></i> Manufacturing
+        </button>
+        <button class="tab-btn" data-industry="realestate">
+          <i class="fa-solid fa-building"></i> Real Estate
+        </button>
+        <button class="tab-btn" data-industry="education">
+          <i class="fa-solid fa-graduation-cap"></i> Education
+        </button>
+        <button class="tab-btn" data-industry="logistics">
+          <i class="fa-solid fa-truck-fast"></i> Logistics
+        </button>
+      </div>
+
+      <!-- Dynamic Featured Project Showcase Card -->
+      <div class="featured-card" id="featured-card">
+        <div class="featured-visual">
+          <img src="assets/images/featured_bot.jpg" alt="Autonomous AI Agent Showcase" class="featured-img" id="featured-img">
+          <div class="metric-badge-floating">
+            <div class="val" id="metric-val">98%</div>
+            <div class="lbl" id="metric-lbl">Customer Satisfaction</div>
+          </div>
+        </div>
+
+        <div class="featured-content">
+          <span class="pill-badge" id="featured-pill">FEATURED PROJECT</span>
+          <h3 id="featured-title">Autonomous AI Agent for Customer Service</h3>
+          <p class="featured-desc" id="featured-desc">
+            An intelligent AI agent that autonomously handles customer inquiries, resolves issues, and escalates complex cases — 24/7, across multiple channels.
+          </p>
+
+          <div class="checklist-grid" id="checklist-grid">
+            <div class="check-item"><i class="fa-solid fa-circle-check"></i> <span>Understands customer intent</span></div>
+            <div class="check-item"><i class="fa-solid fa-circle-check"></i> <span>Learns from interactions</span></div>
+            <div class="check-item"><i class="fa-solid fa-circle-check"></i> <span>Provides accurate, human-like responses</span></div>
+            <div class="check-item"><i class="fa-solid fa-circle-check"></i> <span>Integrates with CRM & Helpdesk</span></div>
+            <div class="check-item"><i class="fa-solid fa-circle-check"></i> <span>Escalates when human intervention is needed</span></div>
+            <div class="check-item"><i class="fa-solid fa-circle-check"></i> <span>Multichannel: Web, Email, Chat, WhatsApp</span></div>
+          </div>
+
+          <div class="hero-cta">
+            <button class="btn btn-primary" onclick="openCaseStudyModal()">View Case Study</button>
+            <a href="#contact" class="btn btn-outline">Request Demo</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- INDUSTRIES DEEP-DIVE GRID SECTION -->
+  <section class="section-dark" id="industries">
+    <div class="container">
+      <div class="section-header" style="text-align: center;">
+        <span class="pill-badge dark">ENTERPRISE DEPLOYMENTS</span>
+        <h2 class="section-title" style="color: white;">Industry Specific Workflows</h2>
+        <p class="section-subtitle" style="color: var(--text-light-muted);">Explore how Bhoomi Solutions tailors Agentic AI for your sector.</p>
+      </div>
+
+      <div class="projects-grid">
+        <div class="project-card" style="background: var(--bg-dark-card); border-color: rgba(255,255,255,0.08);">
+          <div>
+            <span class="project-tag" style="color: var(--cyan-accent);">FINANCE & BANKING</span>
+            <h4 style="color: white;">Automated Fraud & Underwriting</h4>
+            <p style="color: var(--text-light-muted);">Real-time transaction analysis and document verification agents reducing risk by 85%.</p>
+          </div>
+          <div class="project-footer" style="border-color: rgba(255,255,255,0.1);">
+            <span class="project-metric" style="color: var(--cyan-accent);">85% Risk Reduction</span>
+            <button class="btn btn-outline-white btn-sm" onclick="openContactForm('Finance Solution')">Inquire</button>
+          </div>
+        </div>
+
+        <div class="project-card" style="background: var(--bg-dark-card); border-color: rgba(255,255,255,0.08);">
+          <div>
+            <span class="project-tag" style="color: var(--cyan-accent);">HEALTHCARE</span>
+            <h4 style="color: white;">Patient Intake & Scheduling</h4>
+            <p style="color: var(--text-light-muted);">HIPAA-compliant autonomous clinical assistant handling appointment scheduling and triage.</p>
+          </div>
+          <div class="project-footer" style="border-color: rgba(255,255,255,0.1);">
+            <span class="project-metric" style="color: var(--cyan-accent);">24/7 Patient Care</span>
+            <button class="btn btn-outline-white btn-sm" onclick="openContactForm('Healthcare Solution')">Inquire</button>
+          </div>
+        </div>
+
+        <div class="project-card" style="background: var(--bg-dark-card); border-color: rgba(255,255,255,0.08);">
+          <div>
+            <span class="project-tag" style="color: var(--cyan-accent);">LOGISTICS</span>
+            <h4 style="color: white;">Smart Supply Chain Agent</h4>
+            <p style="color: var(--text-light-muted);">Autonomous inventory forecasting and multi-vendor route optimization.</p>
+          </div>
+          <div class="project-footer" style="border-color: rgba(255,255,255,0.1);">
+            <span class="project-metric" style="color: var(--cyan-accent);">40% Speed Gain</span>
+            <button class="btn btn-outline-white btn-sm" onclick="openContactForm('Logistics Solution')">Inquire</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROJECTS & CASE STUDIES SECTION -->
+  <section class="section-light" id="projects">
+    <div class="container">
+      <div class="section-header">
+        <span class="pill-badge">PORTFOLIO & CASE STUDIES</span>
+        <h2 class="section-title">Featured Enterprise Projects</h2>
+        <p class="section-subtitle">Real-world results delivered by Bhoomi Solutions custom Agentic AI architecture.</p>
+      </div>
+
+      <div class="projects-grid">
+        <div class="project-card">
+          <div>
+            <span class="project-tag">FINANCIAL SERVICES</span>
+            <h4>Omnichannel Wealth Advisor Agent</h4>
+            <p>Automated portfolio rebalancing notifications and client query handling for global asset management firm.</p>
+          </div>
+          <div class="project-footer">
+            <span class="project-metric">99.4% Resolution Rate</span>
+            <button class="btn btn-outline btn-sm" onclick="openCaseStudyModal()">Case Study</button>
+          </div>
+        </div>
+
+        <div class="project-card">
+          <div>
+            <span class="project-tag">RETAIL & E-COMMERCE</span>
+            <h4>Autonomous Sales & Upsell Assistant</h4>
+            <p>Conversational buyer agent delivering personalized product recommendations and handling checkout support.</p>
+          </div>
+          <div class="project-footer">
+            <span class="project-metric">+34% Conversion Uplift</span>
+            <button class="btn btn-outline btn-sm" onclick="openCaseStudyModal()">Case Study</button>
+          </div>
+        </div>
+
+        <div class="project-card">
+          <div>
+            <span class="project-tag">REAL ESTATE</span>
+            <h4>Instant Lead Qualification Bot</h4>
+            <p>Automates property inquiries, qualifies buyer budgets, and schedules agent tours directly in CRM calendar.</p>
+          </div>
+          <div class="project-footer">
+            <span class="project-metric">< 1 min Response Time</span>
+            <button class="btn btn-outline btn-sm" onclick="openCaseStudyModal()">Case Study</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- WHY US SECTION -->
+  <section class="section-dark" id="why-us">
+    <div class="container">
+      <div class="section-header" style="text-align: center;">
+        <span class="pill-badge dark">WHY BHOOMI SOLUTIONS</span>
+        <h2 class="section-title" style="color: white;">Engineered for Enterprise Impact</h2>
+        <p class="section-subtitle" style="color: var(--text-light-muted);">Our metrics speak for our commitment to performance, reliability, and security.</p>
+      </div>
+
+      <div class="metrics-row">
+        <div class="metric-card">
+          <div class="metric-num">98%</div>
+          <div class="metric-label">Customer Satisfaction (CSAT)</div>
+        </div>
+        <div class="metric-card">
+          <div class="metric-num">10x</div>
+          <div class="metric-label">Faster Workflow Automation</div>
+        </div>
+        <div class="metric-card">
+          <div class="metric-num">24/7</div>
+          <div class="metric-label">Autonomous Operation</div>
+        </div>
+        <div class="metric-card">
+          <div class="metric-num">99.9%</div>
+          <div class="metric-label">Enterprise Data Accuracy</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT SECTION -->
+  <section class="section-light" id="contact">
+    <div class="container">
+      <div class="section-header">
+        <span class="pill-badge">GET IN TOUCH</span>
+        <h2 class="section-title">Ready to Automate Your Business?</h2>
+        <p class="section-subtitle">Connect with our AI architects today to discuss custom Agentic AI implementation.</p>
+      </div>
+
+      <div class="contact-grid">
+        <div class="contact-info-card">
+          <h3>Bhoomi Solutions Ltd</h3>
+          <p style="color: var(--text-muted); margin-bottom: 30px;">
+            Empowering organizations worldwide with cutting-edge autonomous AI technology.
+          </p>
+
+          <div class="contact-item">
+            <div class="contact-icon"><i class="fa-solid fa-globe"></i></div>
+            <div class="contact-text">
+              <h5>Official Website</h5>
+              <p>www.bhoomisolutionsltd.com</p>
+            </div>
+          </div>
+
+          <div class="contact-item">
+            <div class="contact-icon"><i class="fa-solid fa-envelope"></i></div>
+            <div class="contact-text">
+              <h5>Email Inquiries</h5>
+              <p>info@bhoomisolutionsltd.com</p>
+            </div>
+          </div>
+
+          <div class="contact-item">
+            <div class="contact-icon"><i class="fa-solid fa-shield-halved"></i></div>
+            <div class="contact-text">
+              <h5>Security & Compliance</h5>
+              <p>SOC2, ISO 27001, and GDPR Ready</p>
+            </div>
+          </div>
+        </div>
+
+        <form class="contact-form" id="contact-form" onsubmit="handleFormSubmit(event)">
+          <div class="form-group">
+            <label for="name">Full Name *</label>
+            <input type="text" id="name" class="form-control" placeholder="John Doe" required>
+          </div>
+
+          <div class="form-group">
+            <label for="email">Work Email *</label>
+            <input type="email" id="email" class="form-control" placeholder="john@company.com" required>
+          </div>
+
+          <div class="form-group">
+            <label for="industry-select">Industry / Focus Area</label>
+            <select id="industry-select" class="form-control">
+              <option value="Customer Service">Customer Service</option>
+              <option value="E-commerce">E-commerce</option>
+              <option value="Healthcare">Healthcare</option>
+              <option value="Finance">Finance & Banking</option>
+              <option value="Manufacturing">Manufacturing</option>
+              <option value="Real Estate">Real Estate</option>
+              <option value="Logistics">Logistics</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="message">Message / Project Details *</label>
+            <textarea id="message" class="form-control" placeholder="Tell us about your automation goals..." required></textarea>
+          </div>
+
+          <button type="submit" class="btn btn-primary" style="width: 100%;">
+            Send Message <i class="fa-solid fa-paper-plane"></i>
+          </button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a href="#home" class="logo">
+            <div class="logo-icon">
+              <img src="assets/images/bhoomi_logo.png" alt="Bhoomi Solutions Logo" class="brand-logo-img footer-logo-img">
+            </div>
+            <div class="logo-text">
+              <span class="logo-title" style="color: white;">BHOOMI</span>
+              <span class="logo-sub">SOLUTIONS</span>
+            </div>
+          </a>
+          <p>Bhoomi Solutions builds Agentic AI solutions that think, act and deliver real-world outcomes across industries.</p>
+        </div>
+
+        <div>
+          <h5 class="footer-title">Navigation</h5>
+          <ul class="footer-links">
+            <li><a href="#home">Home</a></li>
+            <li><a href="#about">About Us</a></li>
+            <li><a href="#solutions">Solutions</a></li>
+            <li><a href="#industries">Industries</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h5 class="footer-title">Solutions</h5>
+          <ul class="footer-links">
+            <li><a href="#projects">Projects</a></li>
+            <li><a href="#why-us">Why Us</a></li>
+            <li><a href="#contact">Contact</a></li>
+            <li><a href="#" onclick="openDomainGuideModal(); return false;">Squarespace DNS</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h5 class="footer-title">Domain</h5>
+          <p style="font-size: 0.85rem; color: var(--text-light-muted);">
+            Configured for <strong>www.bhoomisolutionsltd.com</strong> via Squarespace Domain DNS.
+          </p>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p>&copy; 2026 Bhoomi Solutions Ltd. All rights reserved.</p>
+        <p>Intelligent Agents. Autonomous Impact.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- SQUARESPACE DOMAIN SETUP MODAL -->
+  <div class="modal-overlay" id="domain-modal">
+    <div class="modal-card">
+      <button class="modal-close" onclick="closeDomainGuideModal()"><i class="fa-solid fa-xmark"></i></button>
+      <h3 style="color: var(--primary); margin-bottom: 8px;"><i class="fa-solid fa-globe"></i> Squarespace Domain DNS Guide</h3>
+      <p style="color: var(--text-muted); margin-bottom: 20px; font-size: 0.95rem;">
+        Follow these 3 simple steps to connect your domain <strong>www.bhoomisolutionsltd.com</strong> to your deployed web app:
+      </p>
+
+      <div style="background: var(--bg-alt); padding: 20px; border-radius: var(--radius-md); border: 1px solid var(--border-light); margin-bottom: 20px;">
+        <h4 style="font-size: 1rem; margin-bottom: 10px; color: var(--text-main);">Step 1: Log in to Squarespace Domains</h4>
+        <p style="font-size: 0.88rem; color: var(--text-muted);">
+          Go to <a href="https://domains.squarespace.com" target="_blank" style="color: var(--primary);">domains.squarespace.com</a> and click on <strong>bhoomisolutionsltd.com</strong> -> <strong>DNS Settings</strong>.
+        </p>
+
+        <h4 style="font-size: 1rem; margin-top: 16px; margin-bottom: 10px; color: var(--text-main);">Step 2: Add DNS Records</h4>
+        <ul style="font-size: 0.88rem; color: var(--text-main); margin-left: 20px; line-height: 1.8;">
+          <li><strong>A Record:</strong> Host: <code>@</code> | Points to: <code>76.76.21.21</code> (Vercel) or <code>75.2.60.5</code> (Netlify)</li>
+          <li><strong>CNAME Record:</strong> Host: <code>www</code> | Points to: <code>cname.vercel-dns.com</code> (Vercel)</li>
+        </ul>
+
+        <h4 style="font-size: 1rem; margin-top: 16px; margin-bottom: 10px; color: var(--text-main);">Step 3: Save & Verify</h4>
+        <p style="font-size: 0.88rem; color: var(--text-muted);">
+          Save changes. HTTPS/SSL is automatically provisioned for free!
+        </p>
+      </div>
+
+      <button class="btn btn-primary" style="width: 100%;" onclick="closeDomainGuideModal()">Got It!</button>
+    </div>
+  </div>
+
+  <!-- CASE STUDY & DEMO MODAL -->
+  <div class="modal-overlay" id="demo-modal">
+    <div class="modal-card">
+      <button class="modal-close" onclick="closeDemoModal()"><i class="fa-solid fa-xmark"></i></button>
+      <h3 style="color: var(--primary); margin-bottom: 12px;"><i class="fa-solid fa-circle-play"></i> Agentic AI Demo Showcase</h3>
+      <p style="color: var(--text-muted); margin-bottom: 24px;">
+        Watch how Bhoomi Solutions Agentic AI autonomously processes multi-turn workflows, retrieves CRM context, and executes tasks.
+      </p>
+
+      <div style="position: relative; padding-bottom: 56.25%; height: 0; background: #000; border-radius: var(--radius-md); overflow: hidden; margin-bottom: 24px;">
+        <div style="position: absolute; top:0; left:0; width:100%; height:100%; display:flex; flex-direction:column; align-items:center; justify-content:center; color:white; background: radial-gradient(circle, #0052FF 0%, #070D1E 100%);">
+          <i class="fa-solid fa-robot" style="font-size: 3rem; color: var(--cyan-accent); margin-bottom: 16px;"></i>
+          <h4 style="font-size: 1.2rem;">Interactive Demo Preview</h4>
+          <p style="font-size: 0.85rem; color: var(--text-light-muted);">Simulating Autonomous Agent Multichannel Workflow...</p>
+        </div>
+      </div>
+
+      <button class="btn btn-primary" style="width: 100%;" onclick="closeDemoModal()">Close Preview</button>
+    </div>
+  </div>
+
+  <!-- JavaScript -->
+  <script src="main.js"></script>
+</body>
+</html>
