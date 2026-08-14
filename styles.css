@@ -999,3 +999,24 @@ textarea.form-control {
   .metrics-row { grid-template-columns: 1fr; }
   .node-understand, .node-reason, .node-act, .node-learn { position: relative; top: auto; right: auto; bottom: auto; left: auto; margin-bottom: 8px; }
 }
+
+/* Independence Day Special Header */
+header {
+    background: linear-gradient(to right, #FF9933 0%, #FFFFFF 50%, #138808 100%) !important;
+    border-bottom: 2px solid #000080; /* Navy Blue border at the bottom */
+}
+
+/* Change navigation text to Navy Blue for readability on the flag */
+header .nav-link, 
+header .logo-text, 
+header .btn-outline,
+header .mobile-toggle {
+    color: #000080 !important;
+}
+
+/* Ensure the 'Get in Touch' button still looks good */
+header .btn-primary {
+    background-color: #000080 !important;
+    color: white !important;
+    border: none !important;
+}
