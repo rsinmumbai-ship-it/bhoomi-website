@@ -283,13 +283,3 @@ function openContactForm(industryName) {
     contactSection.scrollIntoView({ behavior: 'smooth' });
   }
 }
-
-/* Form Submission Handler */
-function handleFormSubmit(event) {
-  event.preventDefault();
-  const name = document.getElementById('name').value;
-  const email = document.getElementById('email').value;
-
-  alert(`Thank you, ${name}! Your inquiry has been sent to Bhoomi Solutions. Our AI architects will contact you at ${email} within 24 hours.`);
-  document.getElementById('contact-form').reset();
-}
