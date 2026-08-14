@@ -466,55 +466,15 @@
             <li><a href="#projects">Projects</a></li>
             <li><a href="#why-us">Why Us</a></li>
             <li><a href="#contact">Contact</a></li>
-            <li><a href="#" onclick="openDomainGuideModal(); return false;">Squarespace DNS</a></li>
-          </ul>
+            </ul>
         </div>
 
         <div>
-          <h5 class="footer-title">Domain</h5>
-          <p style="font-size: 0.85rem; color: var(--text-light-muted);">
-            Configured for <strong>www.bhoomisolutionsltd.com</strong> via Squarespace Domain DNS.
-          </p>
-        </div>
-      </div>
-
-      <div class="footer-bottom">
         <p>&copy; 2026 Bhoomi Solutions Ltd. All rights reserved.</p>
         <p>Intelligent Agents. Autonomous Impact.</p>
       </div>
     </div>
   </footer>
-
-  <!-- SQUARESPACE DOMAIN SETUP MODAL -->
-  <div class="modal-overlay" id="domain-modal">
-    <div class="modal-card">
-      <button class="modal-close" onclick="closeDomainGuideModal()"><i class="fa-solid fa-xmark"></i></button>
-      <h3 style="color: var(--primary); margin-bottom: 8px;"><i class="fa-solid fa-globe"></i> Squarespace Domain DNS Guide</h3>
-      <p style="color: var(--text-muted); margin-bottom: 20px; font-size: 0.95rem;">
-        Follow these 3 simple steps to connect your domain <strong>www.bhoomisolutionsltd.com</strong> to your deployed web app:
-      </p>
-
-      <div style="background: var(--bg-alt); padding: 20px; border-radius: var(--radius-md); border: 1px solid var(--border-light); margin-bottom: 20px;">
-        <h4 style="font-size: 1rem; margin-bottom: 10px; color: var(--text-main);">Step 1: Log in to Squarespace Domains</h4>
-        <p style="font-size: 0.88rem; color: var(--text-muted);">
-          Go to <a href="https://domains.squarespace.com" target="_blank" style="color: var(--primary);">domains.squarespace.com</a> and click on <strong>bhoomisolutionsltd.com</strong> -> <strong>DNS Settings</strong>.
-        </p>
-
-        <h4 style="font-size: 1rem; margin-top: 16px; margin-bottom: 10px; color: var(--text-main);">Step 2: Add DNS Records</h4>
-        <ul style="font-size: 0.88rem; color: var(--text-main); margin-left: 20px; line-height: 1.8;">
-          <li><strong>A Record:</strong> Host: <code>@</code> | Points to: <code>76.76.21.21</code> (Vercel) or <code>75.2.60.5</code> (Netlify)</li>
-          <li><strong>CNAME Record:</strong> Host: <code>www</code> | Points to: <code>cname.vercel-dns.com</code> (Vercel)</li>
-        </ul>
-
-        <h4 style="font-size: 1rem; margin-top: 16px; margin-bottom: 10px; color: var(--text-main);">Step 3: Save & Verify</h4>
-        <p style="font-size: 0.88rem; color: var(--text-muted);">
-          Save changes. HTTPS/SSL is automatically provisioned for free!
-        </p>
-      </div>
-
-      <button class="btn btn-primary" style="width: 100%;" onclick="closeDomainGuideModal()">Got It!</button>
-    </div>
-  </div>
 
   <!-- CASE STUDY & DEMO MODAL -->
   <div class="modal-overlay" id="demo-modal">
