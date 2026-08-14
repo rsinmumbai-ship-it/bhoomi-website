@@ -254,17 +254,6 @@ function initScrollSpy() {
   });
 }
 
-/* Modal Functions */
-function openDomainGuideModal() {
-  const modal = document.getElementById('domain-modal');
-  if (modal) modal.classList.add('active');
-}
-
-function closeDomainGuideModal() {
-  const modal = document.getElementById('domain-modal');
-  if (modal) modal.classList.remove('active');
-}
-
 function openDemoModal() {
   const modal = document.getElementById('demo-modal');
   if (modal) modal.classList.add('active');
