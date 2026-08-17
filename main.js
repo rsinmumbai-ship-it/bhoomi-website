@@ -333,16 +333,10 @@ function sendDemoMessage() {
 // 4. Automatically close modal and scroll down to "Get in Touch" after 2.5 seconds
     setTimeout(() => {
       closeDemoModal();
-
-      // Mobile delay allows DOM & viewport to re-render properly after modal closure
-      setTimeout(() => {
-        const contactSection = document.getElementById('contact');
-        if (contactSection) {
-          const yOffset = -70; // Adjusts for mobile sticky header height
-          const y = contactSection.getBoundingClientRect().top + window.pageYOffset + yOffset;
-          
-          window.scrollTo({ top: y, behavior: 'smooth' });
-        }
-      }, 150);
+      const contactSection = document.getElementById('contact');
+      if (contactSection) {
+        contactSection.scrollIntoView({ behavior: 'smooth' });
+      }
     }, 2500);
-     
+  }, 600);
+}
