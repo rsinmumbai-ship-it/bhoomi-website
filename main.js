@@ -282,6 +282,51 @@ function openContactForm(industryName) {
   if (contactSection) {
     contactSection.scrollIntoView({ behavior: 'smooth' });
   }
+}
 
-   sendDemoMessage()
+/* Interactive Demo Chat Handler */
+function sendDemoMessage() {
+  const input = document.getElementById('demo-chat-input');
+  const chatBody = document.getElementById('demo-chat-body');
+  
+  if (!input || !chatBody || !input.value.trim()) return;
+
+  const userText = input.value.trim();
+  
+  // 1. Render User Message
+  const userMsgHtml = `
+    <div style="display: flex; justify-content: flex-end; width: 100%;">
+      <div style="background: #0052FF; color: #ffffff; border-radius: 12px; border-top-right-radius: 2px; padding: 10px 14px; font-size: 0.9rem; max-width: 80%; line-height: 1.4;">
+        ${userText}
+      </div>
+    </div>
+  `;
+  chatBody.insertAdjacentHTML('beforeend', userMsgHtml);
+  input.value = '';
+  chatBody.scrollTop = chatBody.scrollHeight;
+
+  // 2. Render Automated Bot Response
+  setTimeout(() => {
+    const botMsgHtml = `
+      <div style="display: flex; gap: 10px; align-items: flex-start;">
+        <div style="width: 32px; height: 32px; border-radius: 50%; background: rgba(0, 198, 255, 0.15); display: flex; align-items: center; justify-content: center; flex-shrink: 0; border: 1px solid rgba(0, 198, 255, 0.4);">
+          <i class="fa-solid fa-robot" style="color: #00C6FF; font-size: 0.85rem;"></i>
+        </div>
+        <div style="background: rgba(255, 255, 255, 0.06); border: 1px solid rgba(255, 255, 255, 0.1); border-radius: 12px; border-top-left-radius: 2px; padding: 12px 16px; color: #e2e8f0; font-size: 0.9rem; max-width: 82%; line-height: 1.5;">
+          Thank you! To view our full case study or tailored solution architecture, please update your requirements in <strong>Get in Touch</strong> below.
+        </div>
+      </div>
+    `;
+    chatBody.insertAdjacentHTML('beforeend', botMsgHtml);
+    chatBody.scrollTop = chatBody.scrollHeight;
+
+    // 3. Automatically close modal and scroll down to "Get in Touch" after 2.5 seconds
+    setTimeout(() => {
+      closeDemoModal();
+      const contactSection = document.getElementById('contact');
+      if (contactSection) {
+        contactSection.scrollIntoView({ behavior: 'smooth' });
+      }
+    }, 2500);
+  }, 600);
 }
