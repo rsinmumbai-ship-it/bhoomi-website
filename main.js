@@ -292,7 +292,8 @@ function sendDemoMessage() {
   if (!input || !chatBody || !input.value.trim()) return;
 
   const userText = input.value.trim();
-  
+  const lowerText = userText.toLowerCase();
+
   // 1. Render User Message
   const userMsgHtml = `
     <div style="display: flex; justify-content: flex-end; width: 100%;">
@@ -305,7 +306,16 @@ function sendDemoMessage() {
   input.value = '';
   chatBody.scrollTop = chatBody.scrollHeight;
 
-  // 2. Render Automated Bot Response
+  // 2. Determine Bot Response Based on Keywords
+  let responseText = "Thank you! To view our full case study or tailored solution architecture, please update your requirements in <strong>Get in Touch</strong>.";
+
+  if (lowerText.includes('case study')) {
+    responseText = "Thank you for your interest in our Case Studies! Please update your specific project requirements in <strong>Get in Touch</strong> and we will send the detailed case study deck to your email.";
+  } else if (lowerText.includes('demo')) {
+    responseText = "Thank you for requesting a Live Demo! Please update your requirements in <strong>Get in Touch</strong> and our technical team will schedule a customized live demo on your email.";
+  }
+
+  // 3. Render Bot Response
   setTimeout(() => {
     const botMsgHtml = `
       <div style="display: flex; gap: 10px; align-items: flex-start;">
@@ -313,14 +323,14 @@ function sendDemoMessage() {
           <i class="fa-solid fa-robot" style="color: #00C6FF; font-size: 0.85rem;"></i>
         </div>
         <div style="background: rgba(255, 255, 255, 0.06); border: 1px solid rgba(255, 255, 255, 0.1); border-radius: 12px; border-top-left-radius: 2px; padding: 12px 16px; color: #e2e8f0; font-size: 0.9rem; max-width: 82%; line-height: 1.5;">
-          Thank you! To view our full case study or tailored solution architecture, please update your requirements in <strong>Get in Touch</strong> below.
+          ${responseText}
         </div>
       </div>
     `;
     chatBody.insertAdjacentHTML('beforeend', botMsgHtml);
     chatBody.scrollTop = chatBody.scrollHeight;
 
-    // 3. Automatically close modal and scroll down to "Get in Touch" after 2.5 seconds
+    // 4. Automatically close modal and scroll down to "Get in Touch" after 2.5 seconds
     setTimeout(() => {
       closeDemoModal();
       const contactSection = document.getElementById('contact');
