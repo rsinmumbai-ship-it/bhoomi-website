@@ -473,18 +473,48 @@
     </div>
   </footer>
 
-  <!-- CASE STUDY & DEMO MODAL -->
+   <!-- CASE STUDY & DEMO MODAL -->
 <div class="modal-overlay" id="demo-modal">
-  <div class="modal-card">
-    <button class="modal-close" onclick="closeDemoModal()"><i class="fa-solid fa-xmark"></i></button>
-    <h3 style="color: var(--primary); margin-bottom: 12px;"><i class="fa-solid fa-circle-play"></i> Interactive Demo Preview</h3>
-    <div style="background: var(--bg-dark-card, #0a1128); border: 1px solid rgba(0, 198, 255, 0.2); border-radius: 12px; padding: 24px; text-align: center; margin: 20px 0;">
-      <i class="fa-solid fa-comments" style="font-size: 2.5rem; color: #00C6FF; margin-bottom: 16px;"></i>
-      <p style="color: #ffffff; font-size: 1.05rem; line-height: 1.6; margin: 0;">
-        Welcome to Bhoomi Solutions. Please update your requirements for demo / case study in Get in Touch and we will provide the required details on your email.
-      </p>
+  <div class="modal-card" style="max-width: 580px; width: 90%; background: #070D1E; border: 1px solid rgba(0, 198, 255, 0.25); border-radius: 16px; padding: 0; overflow: hidden; box-shadow: 0 20px 40px rgba(0,0,0,0.6);">
+    
+    <!-- Modal Header -->
+    <div style="padding: 16px 20px; background: rgba(255, 255, 255, 0.03); border-bottom: 1px solid rgba(255, 255, 255, 0.08); display: flex; align-items: center; justify-content: space-between;">
+      <div style="display: flex; align-items: center; gap: 10px;">
+        <i class="fa-solid fa-robot" style="color: #00C6FF; font-size: 1.2rem;"></i>
+        <div>
+          <h4 style="color: #fff; margin: 0; font-size: 1rem;">Bhoomi AI Live Assistant</h4>
+          <span style="color: #00E676; font-size: 0.75rem; display: flex; align-items: center; gap: 4px;">● Online</span>
+        </div>
+      </div>
+      <button class="modal-close" onclick="closeDemoModal()" style="background: none; border: none; color: #8a99ad; font-size: 1.2rem; cursor: pointer;">
+        <i class="fa-solid fa-xmark"></i>
+      </button>
     </div>
-    <button class="btn btn-primary" style="width: 100%;" onclick="closeDemoModal()">Close Preview</button>
+
+    <!-- Chat Messages Window -->
+    <div id="demo-chat-body" style="padding: 20px; height: 320px; overflow-y: auto; display: flex; flex-direction: column; gap: 14px;">
+      
+      <!-- AI Bot Incoming Message -->
+      <div style="display: flex; gap: 10px; align-items: flex-start;">
+        <div style="width: 32px; height: 32px; border-radius: 50%; background: rgba(0, 198, 255, 0.15); display: flex; align-items: center; justify-content: center; flex-shrink: 0; border: 1px solid rgba(0, 198, 255, 0.4);">
+          <i class="fa-solid fa-robot" style="color: #00C6FF; font-size: 0.85rem;"></i>
+        </div>
+        <div style="background: rgba(255, 255, 255, 0.06); border: 1px solid rgba(255, 255, 255, 0.1); border-radius: 12px; border-top-left-radius: 2px; padding: 12px 16px; color: #e2e8f0; font-size: 0.92rem; max-width: 82%; line-height: 1.5; text-align: left;">
+          Welcome to Bhoomi Solutions! Please update your requirements for demo / case study in <strong>Get in Touch</strong> and we will provide the required details on your email.
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Simulated Input Box -->
+    <div style="padding: 14px 20px; background: rgba(0, 0, 0, 0.2); border-top: 1px solid rgba(255, 255, 255, 0.08); display: flex; gap: 10px; align-items: center;">
+      <input type="text" id="demo-chat-input" placeholder="Ask a question or type 'Demo'..." style="flex: 1; background: rgba(255, 255, 255, 0.05); border: 1px solid rgba(255, 255, 255, 0.15); border-radius: 8px; padding: 10px 14px; color: #fff; outline: none; font-size: 0.9rem;" onkeypress="if(event.key==='Enter') sendDemoMessage()">
+      <button onclick="sendDemoMessage()" style="background: #0052FF; color: #fff; border: none; border-radius: 8px; padding: 10px 16px; cursor: pointer; font-weight: 600; display: flex; align-items: center; gap: 6px;">
+        <span>Send</span>
+        <i class="fa-solid fa-paper-plane" style="font-size: 0.8rem;"></i>
+      </button>
+    </div>
+
   </div>
 </div>
   
