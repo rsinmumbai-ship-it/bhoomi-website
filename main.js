@@ -282,4 +282,6 @@ function openContactForm(industryName) {
   if (contactSection) {
     contactSection.scrollIntoView({ behavior: 'smooth' });
   }
+
+   sendDemoMessage()
 }
