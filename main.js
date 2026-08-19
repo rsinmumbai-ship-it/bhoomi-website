@@ -340,3 +340,44 @@ function sendDemoMessage() {
     }, 2500);
   }, 600);
 }
+
+const form = document.getElementById('contact-form');
+
+if (form) {
+  form.addEventListener('submit', function(e) {
+    e.preventDefault();
+    
+    const submitBtn = form.querySelector('button[type="submit"]');
+    const originalBtnText = submitBtn ? submitBtn.innerText : '';
+    if (submitBtn) submitBtn.innerText = 'Sending...';
+
+    const formData = new FormData(form);
+    const object = Object.fromEntries(formData);
+    const json = JSON.stringify(object);
+
+    fetch('https://api.web3forms.com/submit', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'Accept': 'application/json'
+      },
+      body: json
+    })
+    .then(async (response) => {
+      let result = await response.json();
+      if (response.status === 200) {
+        alert("Thank you! Your message has been sent successfully.");
+        form.reset();
+      } else {
+        alert(result.message || "Something went wrong. Please try again.");
+      }
+    })
+    .catch(error => {
+      console.error(error);
+      alert("Form submission failed. Please try again.");
+    })
+    .finally(() => {
+      if (submitBtn) submitBtn.innerText = originalBtnText;
+    });
+  });
+}
