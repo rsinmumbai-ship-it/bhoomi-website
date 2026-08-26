@@ -381,3 +381,64 @@ if (form) {
     });
   });
 }
+
+// Festive Ribbon Configuration & Renderer
+const festiveRibbons = [
+  {
+    id: "eid-milad-un-nabi-celebration",
+    event: "Eid Milad-un-Nabi",
+    enabled: true,
+    startDate: "2026-08-24T00:00:00Z",
+    endDate: "2026-08-26T23:59:59Z",
+    text: "🌙 Eid Milad-un-Nabi Mubarak! Wishing peace, blessings, and prosperity to all. 🌙",
+    linkText: "Explore Solutions",
+    linkUrl: "#solutions",
+    backgroundColor: "#0D5C3A",
+    textColor: "#FFFFFF"
+  },
+  {
+    id: "onam-celebration",
+    event: "Onam",
+    enabled: true,
+    startDate: "2026-08-26T00:00:00Z",
+    endDate: "2026-09-05T23:59:59Z",
+    text: "🌸 Happy Onam! Celebrating prosperity, joy, and new beginnings. 🌸",
+    linkText: "Learn More",
+    linkUrl: "#contact",
+    backgroundColor: "#FFB800",
+    textColor: "#1A1A1A"
+  }
+];
+
+document.addEventListener("DOMContentLoaded", () => {
+  const now = new Date();
+  
+  // Find the active ribbon for today's date
+  const activeRibbon = festiveRibbons.find(r => 
+    r.enabled && new Date(r.startDate) <= now && now <= new Date(r.endDate)
+  );
+
+  if (activeRibbon) {
+    const banner = document.createElement("div");
+    banner.id = activeRibbon.id;
+    banner.style.cssText = `
+      background-color: ${activeRibbon.backgroundColor};
+      color: ${activeRibbon.textColor};
+      text-align: center;
+      padding: 10px 16px;
+      font-size: 14px;
+      font-weight: 600;
+      position: relative;
+      z-index: 1000;
+    `;
+    banner.innerHTML = `
+      <span>${activeRibbon.text}</span>
+      <a href="${activeRibbon.linkUrl}" style="color: ${activeRibbon.textColor}; text-decoration: underline; margin-left: 8px;">
+        ${activeRibbon.linkText}
+      </a>
+    `;
+
+    // Prepend to top of body or top of header
+    document.body.prepend(banner);
+  }
+});
