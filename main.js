@@ -387,6 +387,30 @@ if (form) {
    ========================================================================== */
 const festiveRibbons = [
   {
+    id: "raksha-bandhan-celebration",
+    event: "Raksha Bandhan",
+    enabled: true,
+    startDate: "2026-08-27T00:00:00Z",
+    endDate: "2026-08-28T23:59:59Z",
+    text: "🧵 Happy Raksha Bandhan! Celebrating the special bond of love, protection, and trust. 🧵",
+    linkText: "Get in Touch",
+    linkUrl: "#contact",
+    backgroundColor: "#D97706",
+    textColor: "#FFFFFF"
+  },
+  {
+    id: "janmashtami-celebration",
+    event: "Janmashtami",
+    enabled: true,
+    startDate: "2026-09-03T00:00:00Z",
+    endDate: "2026-09-04T23:59:59Z",
+    text: "✨ Happy Krishna Janmashtami! May love, peace, and joy fill your home. ✨",
+    linkText: "Get in Touch",
+    linkUrl: "#contact",
+    backgroundColor: "#1E3A8A",
+    textColor: "#FFFFFF"
+  },
+  {
     id: "onam-celebration",
     event: "Onam",
     enabled: true,
