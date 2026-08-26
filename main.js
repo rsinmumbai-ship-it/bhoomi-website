@@ -382,6 +382,9 @@ if (form) {
   });
 }
 
+/* ==========================================================================
+   FESTIVE RIBBON CELEBRATION BANNERS
+   ========================================================================== */
 const festiveRibbons = [
   {
     id: "onam-celebration",
@@ -409,3 +412,46 @@ const festiveRibbons = [
   }
 ];
 
+function initFestiveRibbon() {
+  const now = new Date();
+  
+  // Filter all currently active ribbons
+  const activeRibbons = festiveRibbons.filter(
+    (r) => r.enabled && new Date(r.startDate) <= now && now <= new Date(r.endDate)
+  );
+
+  if (activeRibbons.length === 0) return;
+
+  const header = document.getElementById("header");
+
+  // Render each active ribbon dynamically
+  activeRibbons.forEach((activeRibbon) => {
+    const banner = document.createElement("div");
+    banner.id = activeRibbon.id;
+    banner.style.cssText = `
+      background-color: ${activeRibbon.backgroundColor};
+      color: ${activeRibbon.textColor};
+      text-align: center;
+      padding: 8px 16px;
+      font-size: 14px;
+      font-weight: 600;
+      width: 100%;
+      z-index: 1001;
+    `;
+    banner.innerHTML = `
+      <span>${activeRibbon.text}</span>
+      <a href="${activeRibbon.linkUrl}" style="color: ${activeRibbon.textColor}; text-decoration: underline; margin-left: 8px;">
+        ${activeRibbon.linkText}
+      </a>
+    `;
+
+    if (header) {
+      header.prepend(banner);
+    } else {
+      document.body.prepend(banner);
+    }
+  });
+}
+
+// Run script once DOM is fully loaded
+document.addEventListener("DOMContentLoaded", initFestiveRibbon);
