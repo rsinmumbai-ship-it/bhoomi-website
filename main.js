@@ -413,7 +413,7 @@ const festiveRibbons = [
   {
     id: "onam-celebration",
     event: "Onam",
-    enabled: true,
+    enabled: false,
     startDate: "2026-08-26T00:00:00Z",
     endDate: "2026-09-05T23:59:59Z",
     text: "🌸 Happy Onam! Celebrating prosperity, joy, and new beginnings. 🌸",
