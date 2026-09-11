@@ -1156,3 +1156,9 @@ textarea.form-control {
   align-items: center;
   margin-left: auto; /* Ensures Get in Touch stays cleanly positioned on the right */
 }
+
+/* HIDE FESTIVE ELEMENTS BY DEFAULT */
+.festive-top-bar,
+.header-ganesh-idol {
+  display: none;
+}
