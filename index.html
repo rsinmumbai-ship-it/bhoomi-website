@@ -16,51 +16,59 @@
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-  <!-- FESTIVAL RIBBON BANNER -->
-  <div id="festival-ribbon" class="festival-ribbon">
-    <div class="ribbon-content">
-      <span class="ribbon-text">🌸 Happy Ganesh Chaturthi! Wishing you peace, prosperity, and wisdom. 🌸</span>
-      <a href="#solutions" class="ribbon-cta">Explore Solutions</a>
-    </div>
-    <button class="ribbon-close" onclick="document.getElementById('festival-ribbon').style.display='none'">&times;</button>
-  </div>
-
-  <!-- HEADER / NAVBAR -->
-  <header class="header" id="header">
-    <div class="container nav-container">
-      <a href="#home" class="logo">
-        <div class="logo-icon">
-          <img src="assets/images/bhoomi_logo.png" alt="Bhoomi Solutions Logo" class="brand-logo-img">
-        </div>
-        <div class="logo-text">
-          <span class="logo-title">BHOOMI</span>
-          <span class="logo-sub">SOLUTIONS</span>
-        </div>
-      </a>
-
-      <!-- HEADER GANESH IDOL INTEGRATION -->
-      <div class="header-ganesh-idol">
-        <img src="assets/images/ganesh-idol-header.png" alt="Ganesh Idol" class="idol-img">
-        <div class="diya-glow"></div>
-        <div class="flower-shower">
-          <span class="petal p1">🌸</span>
-          <span class="petal p2">🌼</span>
-          <span class="petal p3">🌺</span>
-          <span class="petal p4">🌸</span>
-        </div>
+   <!-- HEADER / NAVBAR -->
+<header class="header" id="header">
+  <div class="container nav-container">
+    
+    <!-- Logo -->
+    <a href="#home" class="logo">
+      <div class="logo-icon">
+        <img src="assets/images/bhoomi_logo.png" alt="Bhoomi Solutions Logo" class="brand-logo-img">
       </div>
+      <div class="logo-text">
+        <span class="logo-title">BHOOMI</span>
+        <span class="logo-sub">SOLUTIONS</span>
+      </div>
+    </a>
 
-      <!-- Header Tabs (Navigation Links) -->
-      <ul class="nav-links" id="nav-links">
-        <li><a href="#home" class="nav-link active">Home</a></li>
-        <li><a href="#about" class="nav-link">About Us</a></li>
-        <li><a href="#solutions" class="nav-link">Solutions</a></li>
-        <li><a href="#industries" class="nav-link">Industries</a></li>
-        <li><a href="#projects" class="nav-link">Projects</a></li>
-        <li><a href="#why-us" class="nav-link">Why Us</a></li>
-        <li><a href="#contact" class="nav-link">Contact</a></li>
-      </ul>
- 
+    <!-- Small Ganesh Idol Integration -->
+    <div class="header-ganesh-idol">
+      <img src="assets/images/ganesh-idol-header.png" alt="Ganesh Idol" class="idol-img">
+      <div class="diya-glow"></div>
+      <div class="flower-shower">
+        <span class="petal p1">🌸</span>
+        <span class="petal p2">🌼</span>
+        <span class="petal p3">🌺</span>
+        <span class="petal p4">🌸</span>
+      </div>
+    </div>
+
+    <!-- Festive Greeting Text (Orange Text) -->
+    <div class="header-festive-text">
+      🌸 Happy Ganesh Chaturthi! 🌸
+    </div>
+
+    <!-- Navigation Links -->
+    <ul class="nav-links" id="nav-links">
+      <li><a href="#home" class="nav-link active">Home</a></li>
+      <li><a href="#about" class="nav-link">About Us</a></li>
+      <li><a href="#solutions" class="nav-link">Solutions</a></li>
+      <li><a href="#industries" class="nav-link">Industries</a></li>
+      <li><a href="#projects" class="nav-link">Projects</a></li>
+      <li><a href="#why-us" class="nav-link">Why Us</a></li>
+      <li><a href="#contact" class="nav-link">Contact</a></li>
+    </ul>
+
+    <div class="nav-actions">
+      <a href="#contact" class="btn btn-primary btn-sm">Get in Touch</a>
+      <button class="mobile-toggle" id="mobile-toggle" aria-label="Toggle Menu">
+        <i class="fa-solid fa-bars"></i>
+      </button>
+    </div>
+
+  </div>
+</header>
+  
       <div class="nav-actions">
         <a href="#contact" class="btn btn-primary btn-sm">Get in Touch</a>
         <button class="mobile-toggle" id="mobile-toggle" aria-label="Toggle Menu">
