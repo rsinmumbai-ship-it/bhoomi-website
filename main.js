@@ -479,3 +479,23 @@ function initFestiveRibbon() {
 
 // Run script once DOM is fully loaded
 document.addEventListener("DOMContentLoaded", initFestiveRibbon);
+
+/* FESTIVAL FEATURE AUTOMATIC DISPLAY DATES */
+document.addEventListener("DOMContentLoaded", function () {
+  // Set start and end dates (September 14, 2026 to September 23, 2026)
+  const festivalStart = new Date("2026-09-14T00:00:00");
+  const festivalEnd = new Date("2026-09-23T23:59:59");
+  const currentDate = new Date();
+
+  const topBar = document.querySelector(".festive-top-bar");
+  const ganeshIdol = document.querySelector(".header-ganesh-idol");
+
+  // Check if current date falls within the festival window
+  if (currentDate >= festivalStart && currentDate <= festivalEnd) {
+    if (topBar) topBar.style.display = "block";
+    if (ganeshIdol) ganeshIdol.style.display = "flex";
+  } else {
+    if (topBar) topBar.style.display = "none";
+    if (ganeshIdol) ganeshIdol.style.display = "none";
+  }
+});
