@@ -1133,3 +1133,26 @@ textarea.form-control {
   0% { transform: translateY(0) rotate(0deg); opacity: 1; }
   100% { transform: translateY(45px) rotate(360deg); opacity: 0; }
 }
+
+/* HEADER & NAVIGATION ALIGNMENT FIX */
+.nav-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+}
+
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 24px; /* Even spacing between navigation tabs */
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.nav-actions {
+  display: flex;
+  align-items: center;
+  margin-left: auto; /* Ensures Get in Touch stays cleanly positioned on the right */
+}
