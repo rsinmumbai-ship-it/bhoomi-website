@@ -1040,34 +1040,48 @@ textarea.form-control {
   cursor: pointer;
 }
 
-/* HEADER GANESH IDOL & ALIGNED FLOWER SHOWER */
+/* HEADER FESTIVE GREETING & GANESH IDOL INTEGRATION */
 .nav-container {
-  position: relative; /* Restricts absolute positioning inside header bounds */
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: relative;
 }
 
 .header-ganesh-idol {
   position: relative;
-  display: inline-flex;
-  flex-direction: column;
+  display: flex;
   align-items: center;
   justify-content: center;
-  margin-left: 15px;
-  vertical-align: middle;
+  margin-left: 12px;
+  margin-right: 12px;
 }
 
 .idol-img {
-  width: 45px;
+  width: 42px;
   height: auto;
   z-index: 2;
   position: relative;
 }
 
-/* DIYA GLOW */
+/* Orange Festive Greeting Text */
+.header-festive-text {
+  color: #ff6f00; /* Festive Orange Color */
+  font-weight: 700;
+  font-size: 0.85rem;
+  white-space: nowrap;
+  margin-right: 15px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+/* Diya Glow Effect */
 .diya-glow {
   position: absolute;
   bottom: -2px;
-  width: 14px;
-  height: 14px;
+  width: 12px;
+  height: 12px;
   background: radial-gradient(circle, rgba(255, 215, 0, 0.9) 0%, rgba(255, 111, 0, 0) 70%);
   border-radius: 50%;
   animation: pulseGlow 1.5s infinite alternate;
@@ -1079,13 +1093,13 @@ textarea.form-control {
   100% { transform: scale(1.4); opacity: 1; }
 }
 
-/* ACCURATE FLOWER SHOWER (CONTAINED DIRECTLY OVER IDOL) */
+/* Flower Shower Animation */
 .flower-shower {
   position: absolute;
-  top: -15px;
+  top: -12px;
   left: 0;
   width: 100%;
-  height: 55px;
+  height: 50px;
   pointer-events: none;
   overflow: hidden;
   z-index: 1;
@@ -1093,17 +1107,17 @@ textarea.form-control {
 
 .petal {
   position: absolute;
-  font-size: 11px;
+  font-size: 10px;
   animation: fall 2.5s linear infinite;
   opacity: 0;
 }
 
-.p1 { left: 15%; animation-delay: 0s; }
-.p2 { left: 40%; animation-delay: 0.6s; }
+.p1 { left: 10%; animation-delay: 0s; }
+.p2 { left: 35%; animation-delay: 0.6s; }
 .p3 { left: 65%; animation-delay: 1.2s; }
 .p4 { left: 85%; animation-delay: 1.8s; }
 
 @keyframes fall {
   0% { transform: translateY(0) rotate(0deg); opacity: 1; }
-  100% { transform: translateY(50px) rotate(360deg); opacity: 0; }
+  100% { transform: translateY(45px) rotate(360deg); opacity: 0; }
 }
