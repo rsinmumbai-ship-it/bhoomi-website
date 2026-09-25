@@ -1578,7 +1578,7 @@ function bookEnterpriseDemoFromModal() {
   trackConversionEvent('enterprise_demo_requested', { scenario: currentActiveScenario });
 }
 
-/* Production Contact Form Submission Handler (Async with Inline Alert) */
+/* Production Contact Form Submission Handler (Async API + mailto Fallback) */
 async function handleFormSubmit(event) {
   event.preventDefault();
   const nameInput = document.getElementById('name');
@@ -1612,8 +1612,11 @@ async function handleFormSubmit(event) {
 
   trackConversionEvent('lead_form_submitted', { name, email, industry });
 
+  const mailtoSubject = encodeURIComponent(`Bhoomi Solutions Lead Inquiry: ${name} (${industry})`);
+  const mailtoBody = encodeURIComponent(`Name: ${name}\nEmail: ${email}\nIndustry: ${industry}\n\nProject Details:\n${message}`);
+  const mailtoUrl = `mailto:rajeshshetty@bhoomisolutionsltd.com?subject=${mailtoSubject}&body=${mailtoBody}`;
+
   try {
-    // Attempt asynchronous dispatch to form endpoint or Web3Forms API
     const response = await fetch('https://api.web3forms.com/submit', {
       method: 'POST',
       headers: {
@@ -1621,7 +1624,7 @@ async function handleFormSubmit(event) {
         'Accept': 'application/json'
       },
       body: JSON.stringify({
-        access_key: 'bhoomi_lead_submission', // Replaced upon production domain DNS registration
+        access_key: '629c0af0-5bb1-42ab-ae8c-d99cb18c1ffe',
         subject: `New Lead Inquiry: ${name} (${industry})`,
         from_name: name,
         replyto: email,
@@ -1630,29 +1633,39 @@ async function handleFormSubmit(event) {
         message: message,
         to_email: 'rajeshshetty@bhoomisolutionsltd.com'
       })
-    }).catch(() => null);
+    });
 
-    // Render Clean Inline Success Alert
-    if (alertContainer) {
-      alertContainer.style.display = 'block';
-      alertContainer.style.background = 'rgba(0, 255, 135, 0.12)';
-      alertContainer.style.color = '#00FF87';
-      alertContainer.style.border = '1px solid rgba(0, 255, 135, 0.3)';
-      alertContainer.innerHTML = `<i class="fa-solid fa-circle-check"></i> Thank you, <strong>${name}</strong>! Your inquiry has been sent to Bhoomi Solutions. Our AI architects will contact you at <strong>${email}</strong> within 24 hours.`;
+    const result = await response.json().catch(() => null);
+
+    if (result && result.success) {
+      if (alertContainer) {
+        alertContainer.style.display = 'block';
+        alertContainer.style.background = 'rgba(0, 255, 135, 0.12)';
+        alertContainer.style.color = '#00FF87';
+        alertContainer.style.border = '1px solid rgba(0, 255, 135, 0.3)';
+        alertContainer.innerHTML = `<i class="fa-solid fa-circle-check"></i> Thank you, <strong>${name}</strong>! Your inquiry has been sent to Bhoomi Solutions. Our team will contact you at <strong>${email}</strong> within 24 hours.`;
+      }
+      document.getElementById('contact-form').reset();
+    } else {
+      // Fallback: Trigger direct mailto client window
+      window.location.href = mailtoUrl;
+      if (alertContainer) {
+        alertContainer.style.display = 'block';
+        alertContainer.style.background = 'rgba(0, 198, 255, 0.12)';
+        alertContainer.style.color = 'var(--cyan-accent)';
+        alertContainer.style.border = '1px solid rgba(0, 198, 255, 0.3)';
+        alertContainer.innerHTML = `<i class="fa-solid fa-envelope"></i> Thank you, <strong>${name}</strong>! Opening your email app to send directly to <strong>rajeshshetty@bhoomisolutionsltd.com</strong>. Or <a href="${mailtoUrl}" style="color: #FFFFFF; text-decoration: underline;">Click Here to Send Email Directly</a>.`;
+      }
     }
-
-    // Reset Form
-    document.getElementById('contact-form').reset();
   } catch (err) {
-    console.error('Form submission notice:', err);
+    window.location.href = mailtoUrl;
     if (alertContainer) {
       alertContainer.style.display = 'block';
-      alertContainer.style.background = 'rgba(0, 255, 135, 0.12)';
-      alertContainer.style.color = '#00FF87';
-      alertContainer.style.border = '1px solid rgba(0, 255, 135, 0.3)';
-      alertContainer.innerHTML = `<i class="fa-solid fa-circle-check"></i> Thank you, <strong>${name}</strong>! Your inquiry has been dispatched. Our AI team will reach out at <strong>${email}</strong>.`;
+      alertContainer.style.background = 'rgba(0, 198, 255, 0.12)';
+      alertContainer.style.color = 'var(--cyan-accent)';
+      alertContainer.style.border = '1px solid rgba(0, 198, 255, 0.3)';
+      alertContainer.innerHTML = `<i class="fa-solid fa-envelope"></i> Thank you, <strong>${name}</strong>! <a href="${mailtoUrl}" style="color: #FFFFFF; text-decoration: underline;">Click Here to Send Email Directly to rajeshshetty@bhoomisolutionsltd.com</a>.`;
     }
-    document.getElementById('contact-form').reset();
   } finally {
     if (submitBtn) {
       submitBtn.disabled = false;
