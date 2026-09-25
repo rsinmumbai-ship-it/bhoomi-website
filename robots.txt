@@ -1,0 +1,6 @@
+# Production robots.txt for Bhoomi Solutions Ltd
+User-agent: *
+Allow: /
+
+# Sitemap Location
+Sitemap: https://www.bhoomisolutionsltd.com/sitemap.xml
