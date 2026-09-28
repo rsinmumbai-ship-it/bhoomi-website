@@ -1905,4 +1905,18 @@ body.has-festive-ribbon .header {
     font-size: 1rem;
   }
 }
+
+   /* Festive Header Ribbon */
+.festive-banner {
+  background: linear-gradient(90deg, #FF9933 0%, #D4AF37 50%, #FF9933 100%);
+  color: #FFFFFF;
+  text-align: center;
+  padding: 8px 16px;
+  font-size: 0.9rem;
+  font-weight: 700;
+  letter-spacing: 0.03em;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+  position: relative;
+  z-index: 1001;
+}
    
