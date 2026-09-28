@@ -1683,20 +1683,18 @@ document.addEventListener("DOMContentLoaded", function () {
   const banner = document.getElementById("festive-banner");
   const bannerText = document.getElementById("festive-text");
 
-  // 1. Mahatma Gandhi Jayanti (2-Oct-2026)
+ // 1. Mahatma Gandhi Jayanti (2-Oct-2026)
   if (year === 2026 && month === 10 && date === 2) {
-    bannerText.innerHTML = "🕊️ Remembering Mahatma Gandhi on Gandhi Jayanti | Wishing You Peace & Harmony";
+    bannerText.innerHTML = '<i class="fa-solid fa-hands-praying"></i> Remembering Mahatma Gandhi on Gandhi Jayanti | Wishing You Peace & Harmony <i class="fa-solid fa-hands-praying"></i>';
     banner.style.display = "block";
   }
   // 2. Happy Navratri (11-Oct-2026 to 19-Oct-2026)
   else if (year === 2026 && month === 10 && date >= 11 && date <= 19) {
-    bannerText.innerHTML = "✨ Happy Navratri! Wishing you 9 nights of devotion, joy, and prosperity ✨";
+    bannerText.innerHTML = '<i class="fa-solid fa-star"></i> Happy Navratri! Wishing you 9 nights of devotion, joy, and prosperity <i class="fa-solid fa-star"></i>';
     banner.style.display = "block";
   }
   // 3. Happy Dussehra (20-Oct-2026)
   else if (year === 2026 && month === 10 && date === 20) {
-    bannerText.innerHTML = "🏹 Happy Dussehra! May good triumph over evil and bring success to your path 🏹";
+    bannerText.innerHTML = '<i class="fa-solid fa-bullseye"></i> Happy Dussehra! May good triumph over evil and bring success to your path <i class="fa-solid fa-bullseye"></i>';
     banner.style.display = "block";
   }
-});
-
