@@ -1906,3 +1906,28 @@ body.has-festive-ribbon .header {
   }
 }
    
+/* ==========================================================================
+   Festive Header Ribbon Styling (Safe & Non-Blocking)
+   ========================================================================== */
+.festive-banner {
+  background: linear-gradient(-45deg, #FF6B00, #D4AF37, #FF9933, #E65100);
+  background-size: 300% 300%;
+  animation: festiveGlow 6s ease infinite;
+  color: #FFFFFF;
+  text-align: center;
+  padding: 6px 12px;
+  font-size: 0.85rem;
+  font-weight: 700;
+  letter-spacing: 0.03em;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.4);
+  position: relative;
+  z-index: 999;
+  pointer-events: auto;
+}
+
+@keyframes festiveGlow {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+   
