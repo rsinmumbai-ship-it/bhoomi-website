@@ -1673,3 +1673,34 @@ async function handleFormSubmit(event) {
     }
   }
 }
+
+/* ==========================================================================
+   Festive Banner Auto-Display Logic (Safe & Non-Blocking)
+   ========================================================================== */
+document.addEventListener("DOMContentLoaded", function () {
+  const today = new Date();
+  const year = today.getFullYear();
+  const month = today.getMonth() + 1; // 1-12
+  const date = today.getDate();
+
+  const banner = document.getElementById("festive-banner");
+  const bannerText = document.getElementById("festive-text");
+
+  if (!banner || !bannerText) return;
+
+  // 1. Mahatma Gandhi Jayanti (2-Oct-2026)
+  if (year === 2026 && month === 10 && date === 2) {
+    bannerText.innerHTML = '<i class="fa-solid fa-hands-praying"></i> Remembering Mahatma Gandhi on Gandhi Jayanti | Wishing You Peace & Harmony <i class="fa-solid fa-hands-praying"></i>';
+    banner.style.display = "block";
+  }
+  // 2. Happy Navratri (11-Oct-2026 to 19-Oct-2026)
+  else if (year === 2026 && month === 10 && date >= 11 && date <= 19) {
+    bannerText.innerHTML = '<i class="fa-solid fa-star"></i> Happy Navratri! Wishing you 9 nights of devotion, joy, and prosperity <i class="fa-solid fa-star"></i>';
+    banner.style.display = "block";
+  }
+  // 3. Happy Dussehra (20-Oct-2026)
+  else if (year === 2026 && month === 10 && date === 20) {
+    bannerText.innerHTML = '<i class="fa-solid fa-bullseye"></i> Happy Dussehra! May good triumph over evil and bring success to your path <i class="fa-solid fa-bullseye"></i>';
+    banner.style.display = "block";
+  }
+});
