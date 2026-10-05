@@ -943,10 +943,33 @@ function executePromptWorkflow(userQuery) {
   }, 400);
 }
 
-/* Web Speech API - Voice Interaction Controller */
+/* Web Speech API - Voice Interaction & Mobile Audio Controller */
 let isVoiceInputListening = false;
 let isVoiceAudioEnabled = true;
+let isMobileAudioUnlocked = false;
 let speechRecognition = null;
+let selectedIndianFemaleVoice = null;
+
+function unlockMobileAudio() {
+  if (!('speechSynthesis' in window)) return;
+  try {
+    if (window.speechSynthesis.paused) {
+      window.speechSynthesis.resume();
+    }
+    if (!isMobileAudioUnlocked) {
+      const silentUtterance = new SpeechSynthesisUtterance(' ');
+      silentUtterance.volume = 0.01;
+      window.speechSynthesis.speak(silentUtterance);
+      isMobileAudioUnlocked = true;
+    }
+  } catch (e) {
+    console.warn('Mobile audio unlock attempt:', e);
+  }
+}
+
+// User touch/click gesture listeners to unlock mobile SpeechSynthesis audio context
+document.addEventListener('touchstart', unlockMobileAudio, { passive: true });
+document.addEventListener('click', unlockMobileAudio, { passive: true });
 
 function initVoiceInteraction() {
   const SpeechRecognitionClass = window.SpeechRecognition || window.webkitSpeechRecognition;
@@ -993,6 +1016,7 @@ function resetVoiceMicIcon() {
 }
 
 function toggleVoiceInput() {
+  unlockMobileAudio();
   if (!speechRecognition) {
     triggerVoiceSimulation();
     return;
@@ -1009,6 +1033,7 @@ function toggleVoiceInput() {
 }
 
 function toggleVoiceAudio() {
+  unlockMobileAudio();
   isVoiceAudioEnabled = !isVoiceAudioEnabled;
   const btn = document.getElementById('voice-speaker-btn');
   if (btn) {
@@ -1023,8 +1048,6 @@ function toggleVoiceAudio() {
     }
   }
 }
-
-let selectedIndianFemaleVoice = null;
 
 function loadIndianFemaleVoice() {
   if (!('speechSynthesis' in window)) return;
@@ -1044,7 +1067,7 @@ function loadIndianFemaleVoice() {
   if (indianFemale) {
     selectedIndianFemaleVoice = indianFemale;
   } else {
-    // 2. Fallback to general English female voice with Indian English pronunciation tuning
+    // 2. Fallback to general English female voice
     const femaleVoice = voices.find(v => 
       (v.lang.startsWith('en')) && 
       (v.name.toLowerCase().includes('female') || v.name.toLowerCase().includes('zira') || v.name.toLowerCase().includes('samantha') || v.name.toLowerCase().includes('victoria') || v.name.toLowerCase().includes('google'))
@@ -1060,28 +1083,53 @@ if ('speechSynthesis' in window) {
 
 function speakText(textToSpeak) {
   if (!isVoiceAudioEnabled || !('speechSynthesis' in window)) return;
-  window.speechSynthesis.cancel();
+  
+  try {
+    // Unpause WebKit SpeechSynthesis if paused
+    if (window.speechSynthesis.paused) {
+      window.speechSynthesis.resume();
+    }
 
-  // Strip HTML tags for clean speech
-  const cleanText = textToSpeak.replace(/<[^>]*>?/gm, '');
-  const utterance = new SpeechSynthesisUtterance(cleanText);
+    // Strip HTML tags and formatting
+    const cleanText = textToSpeak.replace(/<[^>]*>?/gm, '').replace(/&nbsp;/g, ' ').replace(/\s+/g, ' ').trim();
+    if (!cleanText) return;
 
-  if (!selectedIndianFemaleVoice) {
-    loadIndianFemaleVoice();
+    if (!selectedIndianFemaleVoice) {
+      loadIndianFemaleVoice();
+    }
+
+    const utterance = new SpeechSynthesisUtterance(cleanText);
+
+    if (selectedIndianFemaleVoice) {
+      utterance.voice = selectedIndianFemaleVoice;
+      utterance.lang = selectedIndianFemaleVoice.lang || 'en-IN';
+    } else {
+      utterance.lang = 'en-US';
+    }
+
+    // Mobile-safe pitch & rate parameters
+    utterance.pitch = 1.05;
+    utterance.rate = 0.98;
+    utterance.volume = 1.0;
+
+    // Cancel existing utterance before starting new one
+    window.speechSynthesis.cancel();
+
+    // Short timeout for mobile WebKit queueing
+    setTimeout(() => {
+      try {
+        if (window.speechSynthesis.paused) {
+          window.speechSynthesis.resume();
+        }
+        window.speechSynthesis.speak(utterance);
+      } catch (err) {
+        console.warn('SpeechSynthesis speak error:', err);
+      }
+    }, 50);
+
+  } catch (err) {
+    console.warn('SpeechSynthesis error:', err);
   }
-
-  if (selectedIndianFemaleVoice) {
-    utterance.voice = selectedIndianFemaleVoice;
-    utterance.lang = selectedIndianFemaleVoice.lang || 'en-IN';
-  } else {
-    utterance.lang = 'en-IN';
-  }
-
-  // Pitch tuning for pleasant Indian female voice tone
-  utterance.pitch = 1.25;
-  utterance.rate = 0.95;
-
-  window.speechSynthesis.speak(utterance);
 }
 
 /* Voice Simulation Fallback */
@@ -1243,6 +1291,7 @@ function trackConversionEvent(eventName, eventDetails) {
 
 /* Modal Open & Close Functions */
 function openDemoModal(scenarioKey = 'general', isolateToIndustry = false) {
+  unlockMobileAudio();
   const modal = document.getElementById('demo-modal');
   if (modal) {
     modal.classList.add('active');
@@ -1497,8 +1546,70 @@ function closeLegalModal() {
   if (modal) modal.classList.remove('active');
 }
 
+/* Dynamic Automated Festive Ribbon Scheduler */
+function initFestiveRibbon() {
+  const ribbonContainer = document.getElementById('festive-ribbon');
+  if (!ribbonContainer) return;
+
+  const now = new Date();
+  
+  // Navratri 2026: 11-Oct-2026 00:00:00 to 19-Oct-2026 23:59:59
+  const navratriStart = new Date(2026, 9, 11, 0, 0, 0); // Month 9 is October (0-indexed)
+  const navratriEnd = new Date(2026, 9, 19, 23, 59, 59);
+
+  // Dussehra 2026: 20-Oct-2026 00:00:00 to 20-Oct-2026 23:59:59
+  const dussehraStart = new Date(2026, 9, 20, 0, 0, 0);
+  const dussehraEnd = new Date(2026, 9, 20, 23, 59, 59);
+
+  // URL query parameter preview override: ?ribbon=navratri OR ?ribbon=dussehra
+  const urlParams = new URLSearchParams(window.location.search);
+  const ribbonOverride = urlParams.get('ribbon') || urlParams.get('festive');
+
+  let activeConfig = null;
+
+  if (ribbonOverride === 'navratri' || (now >= navratriStart && now <= navratriEnd)) {
+    activeConfig = {
+      themeClass: 'navratri-theme',
+      badgeText: 'NAVRATRI FESTIVAL',
+      message: '🌸 Happy Navratri! May Goddess Durga bless you with wisdom, strength & prosperity! 🚩'
+    };
+  } else if (ribbonOverride === 'dussehra' || (now >= dussehraStart && now <= dussehraEnd)) {
+    activeConfig = {
+      themeClass: 'dussehra-theme',
+      badgeText: 'VIJAYADASHAMI / DUSSEHRA',
+      message: '🏹 Happy Vijayadashami / Dussehra! Celebrating the victory of Good over Evil! 🏹'
+    };
+  }
+
+  if (activeConfig) {
+    ribbonContainer.className = `festive-ribbon ${activeConfig.themeClass}`;
+    ribbonContainer.innerHTML = `
+      <div class="festive-ribbon-content">
+        <span class="festive-badge">${activeConfig.badgeText}</span>
+        <span class="festive-message"><strong>${activeConfig.message}</strong></span>
+      </div>
+      <button class="festive-close" onclick="closeFestiveRibbon()" aria-label="Close Ribbon">&times;</button>
+    `;
+    ribbonContainer.style.display = 'flex';
+    document.body.classList.add('has-festive-ribbon');
+  } else {
+    ribbonContainer.style.display = 'none';
+    document.body.classList.remove('has-festive-ribbon');
+  }
+}
+
+function closeFestiveRibbon() {
+  const ribbonContainer = document.getElementById('festive-ribbon');
+  if (ribbonContainer) {
+    ribbonContainer.style.display = 'none';
+    document.body.classList.remove('has-festive-ribbon');
+  }
+}
+
 // Attach overlay backdrop click and Mobile Nav Auto-Close handlers
 document.addEventListener('DOMContentLoaded', () => {
+  initFestiveRibbon();
+
   const demoModal = document.getElementById('demo-modal');
   const caseModal = document.getElementById('casestudy-modal');
   const legalModal = document.getElementById('legal-modal');
@@ -1674,33 +1785,3 @@ async function handleFormSubmit(event) {
   }
 }
 
-/* ==========================================================================
-   Festive Banner Auto-Display Logic (Safe & Non-Blocking)
-   ========================================================================== */
-document.addEventListener("DOMContentLoaded", function () {
-  const today = new Date();
-  const year = today.getFullYear();
-  const month = today.getMonth() + 1; // 1-12
-  const date = today.getDate();
-
-  const banner = document.getElementById("festive-banner");
-  const bannerText = document.getElementById("festive-text");
-
-  if (!banner || !bannerText) return;
-
-  // 1. Mahatma Gandhi Jayanti (2-Oct-2026)
-  if (year === 2026 && month === 10 && date === 2) {
-    bannerText.innerHTML = '<i class="fa-solid fa-hands-praying"></i> Remembering Mahatma Gandhi on Gandhi Jayanti | Wishing You Peace & Harmony <i class="fa-solid fa-hands-praying"></i>';
-    banner.style.display = "block";
-  }
-  // 2. Happy Navratri (11-Oct-2026 to 19-Oct-2026)
-  else if (year === 2026 && month === 10 && date >= 11 && date <= 19) {
-    bannerText.innerHTML = '<i class="fa-solid fa-star"></i> Happy Navratri! Wishing you 9 nights of devotion, joy, and prosperity <i class="fa-solid fa-star"></i>';
-    banner.style.display = "block";
-  }
-  // 3. Happy Dussehra (20-Oct-2026)
-  else if (year === 2026 && month === 10 && date === 20) {
-    bannerText.innerHTML = '<i class="fa-solid fa-bullseye"></i> Happy Dussehra! May good triumph over evil and bring success to your path <i class="fa-solid fa-bullseye"></i>';
-    banner.style.display = "block";
-  }
-});

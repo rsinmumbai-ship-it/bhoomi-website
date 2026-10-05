@@ -240,8 +240,7 @@ h1, h2, h3, h4, h5, h6 {
 .nav-links {
   display: flex;
   align-items: center;
-  gap: 20px;
-  flex-wrap: wrap;
+  gap: 32px;
   list-style: none;
   margin: 0;
   padding: 0;
@@ -1745,8 +1744,48 @@ textarea.form-control {
   .checklist-grid { grid-template-columns: 1fr; }
   .projects-grid { grid-template-columns: 1fr; }
   .metrics-row { grid-template-columns: 1fr; }
-  .node-understand, .node-reason, .node-act, .node-learn { position: relative; top: auto; right: auto; bottom: auto; left: auto; margin-bottom: 8px; }
   .demo-modal-card { width: 100vw; height: 100vh; max-height: 100vh; border-radius: 0; }
+
+  /* Mobile Handset Responsive Adjustments */
+  .container { padding: 0 16px; }
+  .header { height: 72px; }
+  .nav-container { height: 72px; }
+  .brand-logo-img { height: 36px; }
+  .logo-title { font-size: 1rem; }
+  .logo-sub { font-size: 0.55rem; }
+  .section-title { font-size: 1.85rem; }
+  .section-subtitle { font-size: 0.92rem; }
+  .hero-title { font-size: 2.1rem; }
+  .hero-subtitle { font-size: 0.95rem; }
+  .hero { padding: 110px 0 60px 0; }
+
+  /* Demo Studio Modal Mobile Layout */
+  .demo-studio-header { padding: 12px 14px; flex-wrap: wrap; gap: 8px; }
+  .demo-studio-brand { gap: 8px; }
+  .demo-studio-badge { display: none; }
+  .demo-mode-tabs { width: 100%; order: 3; justify-content: flex-start; overflow-x: auto; padding-top: 4px; }
+  .demo-mode-btn { padding: 6px 12px; font-size: 0.78rem; white-space: nowrap; }
+  .demo-scenario-nav { padding: 8px 12px; gap: 6px; overflow-x: auto; -webkit-overflow-scrolling: touch; }
+  .scenario-chip { padding: 6px 12px; font-size: 0.76rem; white-space: nowrap; }
+  .demo-console-panel { padding: 12px; }
+  .chat-bubble { max-width: 90%; font-size: 0.88rem; }
+  .demo-input-bar-wrap { padding: 8px 12px; }
+  .demo-input-field { font-size: 0.85rem; }
+  .demo-studio-footer { padding: 10px 14px; flex-direction: column; align-items: stretch; gap: 8px; }
+  .demo-studio-footer-text { font-size: 0.78rem; text-align: center; }
+
+  /* Case Study Modal Mobile Layout */
+  #cs-metrics { grid-template-columns: 1fr !important; gap: 8px !important; }
+  .modal-card { padding: 24px 18px; margin: 10px; max-height: 90vh; }
+}
+
+@media (max-width: 480px) {
+  .hero-cta { flex-direction: column; width: 100%; }
+  .hero-cta .btn { width: 100%; }
+  .tab-btn { padding: 8px 14px; font-size: 0.82rem; }
+  .footer-grid { grid-template-columns: 1fr; gap: 30px; }
+  .footer-bottom { flex-direction: column; gap: 8px; text-align: center; }
+}
 /* ==========================================================================
    DYNAMIC FESTIVE TOP RIBBON BANNER STYLES
    ========================================================================== */
@@ -1766,6 +1805,16 @@ textarea.form-control {
   display: flex;
   align-items: center;
   justify-content: center;
+}
+
+.festive-ribbon.navratri-theme {
+  background: linear-gradient(90deg, #8E0E00 0%, #F00B51 35%, #FF8008 70%, #8E0E00 100%);
+  border-bottom: 2.5px solid #FFD700;
+}
+
+.festive-ribbon.dussehra-theme {
+  background: linear-gradient(90deg, #3A1C71 0%, #D76D77 50%, #FFAF7B 100%);
+  border-bottom: 2.5px solid #FFD700;
 }
 
 .festive-ribbon.ganesh-chaturthi-theme {
@@ -1887,47 +1936,3 @@ body.has-festive-ribbon .header {
   }
 }
 
-/* ==========================================================================
-   TV / Ultra-Wide Display Rules (55"+ Screens)
-   ========================================================================== */
-@media screen and (min-width: 1920px) {
-  .nav-container {
-    max-width: 1400px;
-    margin: 0 auto;
-  }
-
-  .nav-links {
-    gap: 28px;
-    flex-wrap: nowrap;
-  }
-
-  .nav-link {
-    font-size: 1rem;
-  }
-}
-   
-/* ==========================================================================
-   Festive Header Ribbon Styling (Safe & Non-Blocking)
-   ========================================================================== */
-.festive-banner {
-  background: linear-gradient(-45deg, #FF6B00, #D4AF37, #FF9933, #E65100);
-  background-size: 300% 300%;
-  animation: festiveGlow 6s ease infinite;
-  color: #FFFFFF;
-  text-align: center;
-  padding: 6px 12px;
-  font-size: 0.85rem;
-  font-weight: 700;
-  letter-spacing: 0.03em;
-  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.4);
-  position: relative;
-  z-index: 999;
-  pointer-events: auto;
-}
-
-@keyframes festiveGlow {
-  0% { background-position: 0% 50%; }
-  50% { background-position: 100% 50%; }
-  100% { background-position: 0% 50%; }
-}
-   
