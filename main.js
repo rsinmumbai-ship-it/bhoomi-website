@@ -463,27 +463,7 @@ function initHeaderScroll() {
   });
 }
 
-/* Festive Ribbon Controller */
-function initFestiveRibbon() {
-  const ribbon = document.getElementById('festive-ribbon');
-  const badge = document.getElementById('festive-badge');
-  const message = document.getElementById('festive-message');
 
-  if (!ribbon || !badge || !message) return;
-
-  // Force Ganesh Chaturthi / Happy Ganesh Festival ribbon active by default for instant preview
-  ribbon.className = 'festive-ribbon ganesh-chaturthi-theme';
-  badge.innerHTML = '🚩 HAPPY GANESH FESTIVAL';
-  message.innerHTML = '🐘 <strong>Happy Ganesh Festival!</strong> May Lord Ganesha bless your organization with divine wisdom, auspicious beginnings & prosperity — <em>Bhoomi Solutions Ltd</em> 🪔✨';
-  ribbon.style.display = 'block';
-  document.body.classList.add('has-festive-ribbon');
-}
-
-function closeFestiveRibbon() {
-  const ribbon = document.getElementById('festive-ribbon');
-  if (ribbon) ribbon.style.display = 'none';
-  document.body.classList.remove('has-festive-ribbon');
-}
 
 /* 2. Mobile Drawer Navigation Toggle */
 function initMobileMenu() {
@@ -647,6 +627,11 @@ function selectScenario(scenarioKey) {
           <span style="font-size:0.75rem; color:var(--text-light-muted);"><i class="fa-solid fa-bolt" style="color:#00FF87;"></i> Online & Ready</span>
         </div>
         <div class="agent-response-text">${scenario.welcome}</div>
+        <div class="agent-action-buttons" style="display:flex; margin-top:10px;">
+          <button class="agent-action-btn" onclick="speakText('${escapePrompt(scenario.welcome.replace(/<[^>]*>?/gm, ''))}')" style="background: rgba(0, 255, 135, 0.15); border-color: rgba(0, 255, 135, 0.4); color: #00FF87;">
+            <i class="fa-solid fa-volume-high"></i> Listen
+          </button>
+        </div>
       </div>
     `;
   }
@@ -768,23 +753,43 @@ function generateBhoomiOnlineResponse(query) {
     };
   }
 
-  // 5. Healthcare Triage
-  if (q.includes('health') || q.includes('hospital') || q.includes('patient') || q.includes('clinical') || q.includes('doctor') || q.includes('triage') || q.includes('hipaa')) {
+  // 5. Ask about Industries / Supported Industries Overview
+  if (q.includes('ask abour industries') || q.includes('ask about industries') || q.includes('industr') || q.includes('sector') || q.includes('which industries') || q === 'industries') {
     return {
       reasoning: [
-        { step: 'Domain Classification', detail: 'Matched Healthcare Industry Deployment.' },
-        { step: 'Safety Check', detail: 'Enforced ABDM compliance protocol and ESI level verification.' }
+        { step: 'Industry Matrix Retrieval', detail: 'Retrieved 8 core enterprise industry verticals from knowledge base.' }
       ],
-      text: `<strong>🏥 Healthcare Clinical Triage & Patient Care:</strong><br><br>
-      • <strong>ABDM Compliant:</strong> Zero-retention encrypted pipelines for patient data intake.<br>
-      • <strong>Clinical Triage:</strong> Automated Emergency Severity Index (ESI) classification and preliminary assessment.<br>
-      • <strong>EHR Synchronized:</strong> Connects directly with Epic and Cerner for doctor appointment scheduling and alerts.`,
-      actions: ['🏥 Test Clinical Triage Demo', '📩 Get in Touch']
+      text: `<strong>Agentic AI for Every Industry</strong><br>
+Select an industry below to see how our custom autonomous agents automate complex workflows.<br><br>
+• Customer Service<br>
+• E-commerce<br>
+• Healthcare<br>
+• Finance<br>
+• Manufacturing<br>
+• Real Estate<br>
+• Education<br>
+• Logistics`,
+      actions: ['Customer Service', 'E-commerce', 'Healthcare', 'Finance', 'Manufacturing', 'Real Estate', 'Education', 'Logistics', '📩 Get in Touch']
     };
   }
 
-  // 6. E-Commerce / Retail
-  if (q.includes('e-commerce') || q.includes('ecommerce') || q.includes('shop') || q.includes('cart') || q.includes('retail') || q.includes('store') || q.includes('product')) {
+  // 6. Specific Industry: Customer Service
+  if (q === 'customer service' || q.includes('customer support') || q.includes('customer service') || q.includes('crm')) {
+    return {
+      reasoning: [
+        { step: 'Domain Classification', detail: 'Matched Customer Service Agentic AI deployment.' },
+        { step: 'Resolution Benchmark', detail: 'Verified 98% CSAT and omnichannel CRM integration.' }
+      ],
+      text: `<strong>🎧 Customer Service Agentic AI:</strong><br><br>
+      • <strong>Autonomous Resolution:</strong> 24/7 autonomous handling of customer inquiries, warranty verification, and RMA processing.<br>
+      • <strong>CRM & Helpdesk Sync:</strong> Native bi-directional integration with Zendesk, Salesforce, and Freshdesk.<br>
+      • <strong>Performance:</strong> Achieves a <span style="color:#00FF87; font-weight:700;">98% CSAT</span> and sub-minute ticket turnaround.`,
+      actions: ['💬 Ask about Industries', '📩 Get in Touch']
+    };
+  }
+
+  // 7. Specific Industry: E-Commerce
+  if (q === 'e-commerce' || q === 'ecommerce' || q.includes('e-commerce') || q.includes('ecommerce') || q.includes('shop') || q.includes('cart') || q.includes('retail')) {
     return {
       reasoning: [
         { step: 'Domain Classification', detail: 'Matched E-Commerce Shopping & Conversational Commerce.' },
@@ -794,11 +799,96 @@ function generateBhoomiOnlineResponse(query) {
       • <strong>Personalized Recommendations:</strong> AI guides shoppers based on preferences, climate, budget, and sizing.<br>
       • <strong>Real-time Stock & Sync:</strong> Instant warehouse inventory queries and 1-click cart addition.<br>
       • <strong>Results:</strong> Drives an average of <span style="color:#00FF87; font-weight:700;">+34% revenue uplift</span> and automated returns handling.`,
-      actions: ['🛒 Test E-Commerce Demo', '📩 Get in Touch']
+      actions: ['💬 Ask about Industries', '📩 Get in Touch']
     };
   }
 
-  // 7. Security / Hosting
+  // 8. Specific Industry: Healthcare
+  if (q === 'healthcare' || q.includes('health') || q.includes('hospital') || q.includes('patient') || q.includes('clinical') || q.includes('doctor') || q.includes('triage') || q.includes('hipaa') || q.includes('abdm')) {
+    return {
+      reasoning: [
+        { step: 'Domain Classification', detail: 'Matched Healthcare Industry Deployment.' },
+        { step: 'Safety Check', detail: 'Enforced ABDM/HIPAA compliance protocol and ESI level verification.' }
+      ],
+      text: `<strong>🏥 Healthcare Clinical Triage & Patient Care:</strong><br><br>
+      • <strong>ABDM / HIPAA Compliant:</strong> Zero-retention encrypted pipelines for patient data intake.<br>
+      • <strong>Clinical Triage:</strong> Automated Emergency Severity Index (ESI) classification and preliminary assessment.<br>
+      • <strong>EHR Synchronized:</strong> Connects directly with Epic and Cerner for doctor appointment scheduling and alerts.`,
+      actions: ['💬 Ask about Industries', '📩 Get in Touch']
+    };
+  }
+
+  // 9. Specific Industry: Finance
+  if (q === 'finance' || q.includes('banking') || q.includes('underwriting') || q.includes('fraud')) {
+    return {
+      reasoning: [
+        { step: 'Domain Classification', detail: 'Matched Finance & Banking Agentic AI.' }
+      ],
+      text: `<strong>🏦 Finance & Banking Agentic AI:</strong><br><br>
+      • <strong>Mutual Fund Tracker:</strong> Real-time NAV tracking, portfolio rebalancing notifications, and SIP performance analytics.<br>
+      • <strong>Automated Underwriting:</strong> Real-time risk scoring, transaction analysis, and fraud detection.<br>
+      • <strong>Results:</strong> Delivers <span style="color:#00FF87; font-weight:700;">99.4% resolution accuracy</span> and 85% risk reduction.`,
+      actions: ['💬 Ask about Industries', '📩 Get in Touch']
+    };
+  }
+
+  // 10. Specific Industry: Manufacturing
+  if (q === 'manufacturing' || q.includes('manufactur') || q.includes('factory')) {
+    return {
+      reasoning: [
+        { step: 'Domain Classification', detail: 'Matched Manufacturing & IoT Telemetry deployment.' }
+      ],
+      text: `<strong>🏭 Manufacturing Agentic AI:</strong><br><br>
+      • <strong>Predictive Maintenance:</strong> Real-time IoT sensor telemetry monitoring and anomaly detection.<br>
+      • <strong>Autonomous Procurement:</strong> Automatically triggers purchase orders for critical replacement components.<br>
+      • <strong>Impact:</strong> Reduces unexpected factory equipment downtime by <span style="color:#00FF87; font-weight:700;">45%</span>.`,
+      actions: ['💬 Ask about Industries', '📩 Get in Touch']
+    };
+  }
+
+  // 11. Specific Industry: Real Estate
+  if (q === 'real estate' || q.includes('real estate') || q.includes('property')) {
+    return {
+      reasoning: [
+        { step: 'Domain Classification', detail: 'Matched Real Estate Lead Qualification deployment.' }
+      ],
+      text: `<strong>🏢 Real Estate Agentic AI:</strong><br><br>
+      • <strong>Instant Lead Qualification:</strong> Automates property inquiries and qualifies buyer budgets 24/7.<br>
+      • <strong>Calendar Sync:</strong> Schedules private agent tours directly in CRM calendar within &lt; 1 minute.<br>
+      • <strong>Impact:</strong> Delivers instant buyer engagement with <span style="color:#00FF87; font-weight:700;">&lt; 1 min response time</span>.`,
+      actions: ['💬 Ask about Industries', '📩 Get in Touch']
+    };
+  }
+
+  // 12. Specific Industry: Education
+  if (q === 'education' || q.includes('education') || q.includes('tutor') || q.includes('student') || q.includes('learning')) {
+    return {
+      reasoning: [
+        { step: 'Domain Classification', detail: 'Matched Education & AI Tutoring deployment.' }
+      ],
+      text: `<strong>🎓 Education Agentic AI:</strong><br><br>
+      • <strong>24/7 AI Tutoring:</strong> Adaptive learning companion that answers student queries across coursework.<br>
+      • <strong>LMS Sync:</strong> Automatically generates quizzes, delivers personalized feedback, and syncs with Canvas/Blackboard.<br>
+      • <strong>Impact:</strong> Increases student engagement and concept mastery to <span style="color:#00FF87; font-weight:700;">92%</span>.`,
+      actions: ['💬 Ask about Industries', '📩 Get in Touch']
+    };
+  }
+
+  // 13. Specific Industry: Logistics
+  if (q === 'logistics' || q.includes('logistic') || q.includes('fleet') || q.includes('supply chain') || q.includes('dispatch')) {
+    return {
+      reasoning: [
+        { step: 'Domain Classification', detail: 'Matched Logistics & Fleet Optimization deployment.' }
+      ],
+      text: `<strong>🚚 Logistics & Supply Chain Agentic AI:</strong><br><br>
+      • <strong>Dynamic Routing:</strong> Real-time weather, traffic, and multi-vendor route optimization.<br>
+      • <strong>Autonomous Dispatch:</strong> Driver task allocation and live customer package ETA tracking alerts.<br>
+      • <strong>Impact:</strong> Delivers a <span style="color:#00FF87; font-weight:700;">40% speed gain</span> and significant fuel cost reduction.`,
+      actions: ['💬 Ask about Industries', '📩 Get in Touch']
+    };
+  }
+
+  // 14. Security / Hosting / DPDP
   if (q.includes('security') || q.includes('compliance') || q.includes('hosted') || q.includes('soc2') || q.includes('iso') || q.includes('gdpr') || q.includes('dpdp')) {
     return {
       reasoning: [
@@ -812,27 +902,19 @@ function generateBhoomiOnlineResponse(query) {
     };
   }
 
-  // 8. Supported Industries Overview
-  if (q.includes('industr') || q.includes('sector') || q.includes('customer service') || q.includes('bsecure') || q.includes('manufacturing') || q.includes('real estate') || q.includes('education') || q.includes('logistics')) {
+  // 15. Special Greeting: Grandma's Birthday (13-Oct-2026)
+  if (q.includes('grandma') || q.includes('birthday')) {
     return {
       reasoning: [
-        { step: 'Industry Matrix Retrieval', detail: 'Queried 9 enterprise industry verticals from knowledge base.' }
+        { step: 'Celebration Recognition', detail: 'Identified special birthday milestone: Happy Birthday Grandma! (13th Oct 2026)' }
       ],
-      text: `<strong>🌐 Bhoomi Solutions delivers Agentic AI across 9 key sectors:</strong><br><br>
-      1. <strong>Customer Service:</strong> 24/7 autonomous issue resolution.<br>
-      2. <strong>Finance:</strong> Mutual Fund Tracker, automated risk scoring, and underwriting.<br>
-      3. <strong>Healthcare:</strong> ABDM compliant patient triage and EHR scheduling.<br>
-      4. <strong>E-Commerce:</strong> Conversational shopping assistants.<br>
-      5. <strong>Manufacturing:</strong> IoT telemetry and predictive maintenance.<br>
-      6. <strong>Real Estate:</strong> 24/7 lead qualification and tour booking.<br>
-      7. <strong>Education:</strong> 24/7 AI tutoring companions.<br>
-      8. <strong>Logistics:</strong> Fleet route optimization and autonomous dispatch.<br>
-      9. <strong>Bsecure:</strong> Autonomous zero-trust cybersecurity & threat defense.`,
-      actions: ['🚀 Explore All Industries', '📩 Get in Touch']
+      text: `🎂 <strong>Heartiest Birthday Wishes to Grandma!</strong> 💐<br><br>
+      The entire Bhoomi Solutions family extends warmest greetings to Grandma on her birthday! Wishing her divine health, peace, joy, and long life! 💖✨ | 🌸 Happy Navratri! 🚩`,
+      actions: ['🌸 Happy Navratri', '🚀 Explore Solutions', '📩 Get in Touch']
     };
   }
 
-  // 9. FALLBACK FOR COMPLEX / UNRESOLVED / OUT-OF-DOMAIN QUERIES
+  // 16. FALLBACK FOR COMPLEX / UNRESOLVED / OUT-OF-DOMAIN QUERIES
   // EXACT TEXT REQUIRED BY USER:
   return {
     reasoning: [
@@ -847,6 +929,7 @@ function generateBhoomiOnlineResponse(query) {
 /* Handle Prompt Submission */
 function handleDemoPromptSubmit(event) {
   if (event) event.preventDefault();
+  unlockMobileAudio();
   const inputElem = document.getElementById('demo-user-input');
   if (!inputElem) return;
 
@@ -858,6 +941,7 @@ function handleDemoPromptSubmit(event) {
 }
 
 function executePresetPrompt(promptText) {
+  unlockMobileAudio();
   executePromptWorkflow(promptText);
 }
 
@@ -904,6 +988,9 @@ function executePromptWorkflow(userQuery) {
       <i class="fa-solid fa-spinner fa-spin" style="color:var(--cyan-accent);"></i> Bhoomi Online is typing...
     </div>
     <div class="agent-action-buttons" style="display:none;">
+      <button class="agent-action-btn" onclick="speakText('${escapePrompt(responseData.text.replace(/<[^>]*>?/gm, ''))}')" style="background: rgba(0, 255, 135, 0.15); border-color: rgba(0, 255, 135, 0.4); color: #00FF87;">
+        <i class="fa-solid fa-volume-high"></i> Listen
+      </button>
       ${responseData.actions.map(act => {
         if (act.includes('Get in Touch')) {
           return `<button class="agent-action-btn" onclick="bookEnterpriseDemoFromModal()"><i class="fa-solid fa-paper-plane"></i> Get in Touch</button>`;
@@ -916,7 +1003,7 @@ function executePromptWorkflow(userQuery) {
   chatMessages.appendChild(agentBubble);
   chatMessages.scrollTop = chatMessages.scrollHeight;
 
-  // 4. Simulate Token-by-Token Streaming Completion
+  // 4. Quick Response Completion & Speech Trigger
   setTimeout(() => {
     updateTelemetry('ACTIVE', '18ms', '99.8%');
     renderToolOutput({
@@ -926,21 +1013,19 @@ function executePromptWorkflow(userQuery) {
       "execution_state": "RESOLVED_SUCCESSFULLY"
     });
 
-    setTimeout(() => {
-      const streamElem = agentBubble.querySelector('.agent-response-text');
-      const actionRow = agentBubble.querySelector('.agent-action-buttons');
+    const streamElem = agentBubble.querySelector('.agent-response-text');
+    const actionRow = agentBubble.querySelector('.agent-action-buttons');
 
-      if (streamElem) {
-        streamElem.innerHTML = responseData.text;
-        speakText(responseData.text);
-      }
-      if (actionRow) {
-        actionRow.style.display = 'flex';
-      }
+    if (streamElem) {
+      streamElem.innerHTML = responseData.text;
+      speakText(responseData.text);
+    }
+    if (actionRow) {
+      actionRow.style.display = 'flex';
+    }
 
-      chatMessages.scrollTop = chatMessages.scrollHeight;
-    }, 600);
-  }, 400);
+    chatMessages.scrollTop = chatMessages.scrollHeight;
+  }, 100);
 }
 
 /* Web Speech API - Voice Interaction & Mobile Audio Controller */
@@ -1112,20 +1197,20 @@ function speakText(textToSpeak) {
     utterance.rate = 0.98;
     utterance.volume = 1.0;
 
-    // Cancel existing utterance before starting new one
-    window.speechSynthesis.cancel();
+    // Cancel existing utterance if already speaking
+    if (window.speechSynthesis.speaking) {
+      window.speechSynthesis.cancel();
+    }
 
-    // Short timeout for mobile WebKit queueing
-    setTimeout(() => {
-      try {
-        if (window.speechSynthesis.paused) {
-          window.speechSynthesis.resume();
-        }
-        window.speechSynthesis.speak(utterance);
-      } catch (err) {
-        console.warn('SpeechSynthesis speak error:', err);
+    // Speak synchronously within the active user touch/click gesture turn
+    try {
+      if (window.speechSynthesis.paused) {
+        window.speechSynthesis.resume();
       }
-    }, 50);
+      window.speechSynthesis.speak(utterance);
+    } catch (speakErr) {
+      console.warn('SpeechSynthesis speak error:', speakErr);
+    }
 
   } catch (err) {
     console.warn('SpeechSynthesis error:', err);
@@ -1553,30 +1638,41 @@ function initFestiveRibbon() {
 
   const now = new Date();
   
+  // Grandma's Birthday 2026: 13-Oct-2026 00:00:00 to 13-Oct-2026 23:59:59
+  const grandmaBirthdayStart = new Date(2026, 9, 13, 0, 0, 0); // Month 9 is October (0-indexed)
+  const grandmaBirthdayEnd = new Date(2026, 9, 13, 23, 59, 59);
+
   // Navratri 2026: 11-Oct-2026 00:00:00 to 19-Oct-2026 23:59:59
-  const navratriStart = new Date(2026, 9, 11, 0, 0, 0); // Month 9 is October (0-indexed)
+  const navratriStart = new Date(2026, 9, 11, 0, 0, 0);
   const navratriEnd = new Date(2026, 9, 19, 23, 59, 59);
 
   // Dussehra 2026: 20-Oct-2026 00:00:00 to 20-Oct-2026 23:59:59
   const dussehraStart = new Date(2026, 9, 20, 0, 0, 0);
   const dussehraEnd = new Date(2026, 9, 20, 23, 59, 59);
 
-  // URL query parameter preview override: ?ribbon=navratri OR ?ribbon=dussehra
+  // URL query parameter preview override: ?ribbon=birthday OR ?ribbon=grandma OR ?ribbon=navratri OR ?ribbon=dussehra
   const urlParams = new URLSearchParams(window.location.search);
-  const ribbonOverride = urlParams.get('ribbon') || urlParams.get('festive');
+  const ribbonOverride = (urlParams.get('ribbon') || urlParams.get('festive') || '').toLowerCase();
 
   let activeConfig = null;
 
-  if (ribbonOverride === 'navratri' || (now >= navratriStart && now <= navratriEnd)) {
+  // 1. Grandma's Birthday (13th October 2026) - Celebrated today alongside Navratri
+  if (ribbonOverride === 'birthday' || ribbonOverride === 'grandma' || (now >= grandmaBirthdayStart && now <= grandmaBirthdayEnd)) {
+    activeConfig = {
+      themeClass: 'birthday-theme',
+      badgeText: '🎂 SPECIAL CELEBRATION',
+      message: '🎂 Happy Birthday Grandma! 💐 Wishing you love, health & happiness! 💖 | 🌸 Happy Navratri! 🚩'
+    };
+  } else if (ribbonOverride === 'navratri' || (now >= navratriStart && now <= navratriEnd)) {
     activeConfig = {
       themeClass: 'navratri-theme',
-      badgeText: 'NAVRATRI FESTIVAL',
+      badgeText: '🌸 HAPPY NAVRATRI',
       message: '🌸 Happy Navratri! May Goddess Durga bless you with wisdom, strength & prosperity! 🚩'
     };
   } else if (ribbonOverride === 'dussehra' || (now >= dussehraStart && now <= dussehraEnd)) {
     activeConfig = {
       themeClass: 'dussehra-theme',
-      badgeText: 'VIJAYADASHAMI / DUSSEHRA',
+      badgeText: '🏹 VIJAYADASHAMI / DUSSEHRA',
       message: '🏹 Happy Vijayadashami / Dussehra! Celebrating the victory of Good over Evil! 🏹'
     };
   }

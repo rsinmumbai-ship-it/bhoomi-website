@@ -1172,6 +1172,8 @@ textarea.form-control {
 
 /* Chat & Console Workspace */
 .demo-console-panel {
+  flex: 1;
+  min-height: 0;
   background: rgba(13, 23, 51, 0.7);
   border-radius: var(--radius-md);
   border: 1px solid rgba(255, 255, 255, 0.08);
@@ -1760,19 +1762,25 @@ textarea.form-control {
   .hero { padding: 110px 0 60px 0; }
 
   /* Demo Studio Modal Mobile Layout */
-  .demo-studio-header { padding: 12px 14px; flex-wrap: wrap; gap: 8px; }
+  .demo-modal-card { width: 100vw; height: 100dvh; max-height: 100dvh; border-radius: 0; }
+  .demo-studio-header { padding: 10px 14px; flex-wrap: wrap; gap: 8px; flex-shrink: 0; }
   .demo-studio-brand { gap: 8px; }
   .demo-studio-badge { display: none; }
   .demo-mode-tabs { width: 100%; order: 3; justify-content: flex-start; overflow-x: auto; padding-top: 4px; }
   .demo-mode-btn { padding: 6px 12px; font-size: 0.78rem; white-space: nowrap; }
-  .demo-scenario-nav { padding: 8px 12px; gap: 6px; overflow-x: auto; -webkit-overflow-scrolling: touch; }
+  .demo-scenario-nav { padding: 6px 12px; gap: 6px; overflow-x: auto; -webkit-overflow-scrolling: touch; flex-shrink: 0; }
   .scenario-chip { padding: 6px 12px; font-size: 0.76rem; white-space: nowrap; }
-  .demo-console-panel { padding: 12px; }
-  .chat-bubble { max-width: 90%; font-size: 0.88rem; }
-  .demo-input-bar-wrap { padding: 8px 12px; }
-  .demo-input-field { font-size: 0.85rem; }
-  .demo-studio-footer { padding: 10px 14px; flex-direction: column; align-items: stretch; gap: 8px; }
-  .demo-studio-footer-text { font-size: 0.78rem; text-align: center; }
+  .demo-workspace-grid { padding: 8px 10px; flex: 1; min-height: 0; overflow: hidden; }
+  .demo-console-panel { flex: 1; min-height: 0; height: 100%; padding: 0; display: flex; flex-direction: column; overflow: hidden; }
+  .demo-console-header { padding: 8px 12px; flex-shrink: 0; }
+  .demo-prompt-chips-wrap { flex-wrap: nowrap; overflow-x: auto; -webkit-overflow-scrolling: touch; padding: 6px 10px; gap: 6px; flex-shrink: 0; }
+  .quick-prompt-btn { white-space: nowrap; flex-shrink: 0; font-size: 0.74rem; padding: 5px 10px; }
+  .demo-chat-messages { flex: 1; min-height: 0; padding: 10px 12px; overflow-y: auto; -webkit-overflow-scrolling: touch; }
+  .chat-bubble { max-width: 95%; font-size: 0.85rem; padding: 10px 14px; }
+  .demo-input-bar-wrap { padding: 8px 12px; flex-shrink: 0; }
+  .demo-input-field { font-size: 0.85rem; padding: 10px 14px; }
+  .demo-studio-footer { padding: 8px 12px; flex-direction: column; align-items: stretch; gap: 6px; flex-shrink: 0; }
+  .demo-studio-footer-text { font-size: 0.75rem; text-align: center; }
 
   /* Case Study Modal Mobile Layout */
   #cs-metrics { grid-template-columns: 1fr !important; gap: 8px !important; }
@@ -1805,6 +1813,11 @@ textarea.form-control {
   display: flex;
   align-items: center;
   justify-content: center;
+}
+
+.festive-ribbon.birthday-theme {
+  background: linear-gradient(90deg, #D81159 0%, #FF5964 25%, #FF8008 50%, #8E2DE2 75%, #4A00E0 100%);
+  border-bottom: 2.5px solid #FFD700;
 }
 
 .festive-ribbon.navratri-theme {
