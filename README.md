@@ -1,64 +1,47 @@
-# Bhoomi Solutions Website & Squarespace Domain Integration Guide
+# Bhoomi Solutions Website & Generative AI Studio
 
 This repository contains the complete custom web application for **Bhoomi Solutions Ltd** (`www.bhoomisolutionsltd.com`), built with modern HTML5, CSS3, and JavaScript following the exact colors, logo, typography, and interactive headers from your design.
 
 ---
 
-## 🚀 How to Preview Locally
+## 🚀 How to Preview & Analyze Locally
 
-To launch and preview your website locally:
+To launch and preview your website and test all Generative AI demos locally:
+
 1. Open PowerShell or Command Prompt in this folder:
    ```bash
    cd C:\Users\imsra\.gemini\antigravity\scratch\custom-website
    ```
-2. Run a local web server:
+2. Run a local web server using Python:
    ```bash
-   npx serve .
+   python -m http.server 3000
    ```
-3. Open your browser at `http://localhost:3000` to interact with the site!
+3. Open your browser at:
+   👉 **`http://localhost:3000`**
 
 ---
 
-## 🌐 Step-by-Step Hosting & Squarespace Domain Setup
+## 🤖 Generative AI Demo Showcase Features
 
-You can host this website completely **FREE** with automatic SSL (HTTPS) on **Vercel** or **Netlify** without paying for a Squarespace website builder plan!
+When you click **"Watch Demo"** anywhere on the site (Hero section, navigation, industry cards, or floating bottom-right beacon), the **Bhoomi GenAI & Agentic Studio** opens with:
 
-### Step 1: Deploy to Vercel (Free Hosting)
-1. Go to [vercel.com](https://vercel.com) and log in or create a free account.
-2. Click **Add New Project** -> **Upload Folder** (or push to GitHub and import).
-3. Select the `custom-website` folder.
-4. Click **Deploy**. Vercel will deploy your site in ~15 seconds and give you a live URL (e.g. `bhoomi-solutions.vercel.app`).
-
----
-
-### Step 2: Connect Your Domain in Squarespace
-
-1. Log into your **Squarespace Account** at [domains.squarespace.com](https://domains.squarespace.com).
-2. Select your domain: `bhoomisolutionsltd.com`.
-3. Click on **DNS Settings** (or **Manage Domain Records**).
-4. Remove default placeholder parking records if any, then add the following records:
-
-#### A Record (Main Domain):
-- **Host**: `@`
-- **Type**: `A`
-- **Points To**: `76.76.21.21` (If using Vercel) or `75.2.60.5` (If using Netlify)
-
-#### CNAME Record (Subdomain):
-- **Host**: `www`
-- **Type**: `CNAME`
-- **Points To**: `cname.vercel-dns.com` (If using Vercel) or `your-app-name.netlify.app` (If using Netlify)
+1. **5 Interactive Multi-Agent Industry Scenarios**:
+   - **Customer Support Agent**: Autonomous RMA replacement processing, warranty verification, and CRM sync.
+   - **Financial Document Intelligence**: EBITDA extraction, Debt-to-Equity computation, and SOX audit verification.
+   - **Clinical Triage & Patient Care**: HIPAA-compliant Emergency Severity Index (ESI) triage and EHR alert dispatching.
+   - **Conversational Commerce & AI Stylist**: Catalog search, outfit bundling, and live inventory locking.
+   - **Autonomous DevOps & SQL Generator**: Natural language to PostgreSQL queries with syntax highlighting and query plan analytics.
+2. **Chain-of-Thought (CoT) Reasoning Engine**: Step-by-step thinking breakdown (NLP Intent $\rightarrow$ Vector RAG $\rightarrow$ Tool Invocation $\rightarrow$ Synthesis).
+3. **Live Tool Execution Sandbox**: Real-time syntax-colored JSON/SQL payloads.
+4. **Telemetry HUD**: Displays active agent state, 18ms inference latency, and decision accuracy.
+5. **Guided Video & Architecture Walkthrough**: 4-chapter interactive presentation with chapter scrubbing and auto-play.
+6. **Model Tuning**: Interactive sliders for temperature, reasoning depth, and guardrails.
 
 ---
 
-### Step 3: Verify Domain in Vercel / Netlify
-1. In your Vercel Project Dashboard, go to **Settings** -> **Domains**.
-2. Type `www.bhoomisolutionsltd.com` and `bhoomisolutionsltd.com` and click **Add**.
-3. Vercel will automatically verify the DNS records and issue a free SSL certificate! Your website will now be live worldwide at `https://www.bhoomisolutionsltd.com`!
-
----
-
-## 🎨 Features & Architecture
-- **Interactive Header Navigation Tabs**: `Home`, `About Us`, `Solutions`, `Industries`, `Projects`, `Why Us`, `Contact` with smooth-scrolling active indicators and scrollspy.
+## 🎨 Design System & Architecture
+- **Interactive Header Navigation**: `Home`, `About Us`, `Solutions`, `Industries`, `Projects`, `Why Us`, `Contact` with smooth-scrolling active indicators and scrollspy.
 - **Dynamic Industry Switcher**: 8 industry tabs (`Customer Service`, `E-commerce`, `Healthcare`, `Finance`, `Manufacturing`, `Real Estate`, `Education`, `Logistics`) updating featured case study cards in real time.
-- **Responsive & Mobile Ready**: Full drawer navigation menu for mobile devices.
+- **Responsive & Mobile Ready**: Full drawer navigation menu and adaptive modal view for mobile devices.
 - **Brand Colors**: Royal Electric Blue (`#0052FF`), Cyan (`#00C6FF`), and Deep Dark Navy (`#070D1E`).
+

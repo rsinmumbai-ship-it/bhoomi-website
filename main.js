@@ -205,7 +205,7 @@ const demoScenarios = {
     welcome: 'Hello! I am <strong>Bhoomi Online</strong>, your AI assistant for <strong>Bhoomi Solutions Ltd</strong>. You can ask me anything about our Agentic AI capabilities, our enterprise projects like the <strong>Mutual Fund Tracker</strong>, industry workflows, or how to get in touch!<br><br>👉 <em>Click a quick question below or type your custom question!</em>',
     presets: [
       'What does Bhoomi Solutions do and how does Agentic AI work?',
-      'Tell me about the Mutual Fund Tracker project.',
+      'Tell me about the Mutual Fund Tracker',
       'Ask about Industries',
       'How can I get in touch with Bhoomi Solutions?'
     ],
@@ -264,40 +264,74 @@ const demoScenarios = {
     name: 'Mutual Fund Tracker & Financial Intelligence Agent',
     badge: 'MUTUAL FUND & PORTFOLIO AGENT',
     toolBadge: 'PORTFOLIO_NAV_REBALANCE_API',
-    welcome: 'Welcome! I am Bhoomi’s <strong>Mutual Fund Tracker & Financial Intelligence Agent</strong>. I autonomously track fund NAV performance, automate portfolio rebalancing, monitor SIP investments, and parse financial statements with real-time risk calculations.',
+    welcome: 'Welcome! I am Bhoomi’s <strong>Mutual Fund Tracker & Financial Intelligence Agent</strong>. I autonomously track fund NAV performance, generate 6-month growth predictions (till May-2027), analyze sectoral Capex drivers, automate portfolio rebalancing, and project high-performance funds with real-time risk calculations.',
     presets: [
-      'Track Top 5 Large-Cap & Flexi-Cap Mutual Funds with 3-year CAGR & Alpha returns.',
-      'Rebalance client portfolio #MF-90214: Shift 15% debt allocation to index equity.',
-      'Audit Q4 financial balance sheet: Extract EBITDA, Debt-to-Equity, and risk indicators.'
+      'Project 3 High Performance Potential Funds (6-Month Forecast till May-2027).',
+      'Analyze Nippon India Power & Infra Fund: Growth Drivers & Core Holdings.',
+      'Evaluate Tata Digital India Fund (+5% to +12%) Tech Tailwinds.',
+      'Rebalance client portfolio #MF-90214: Shift 15% debt allocation to index equity.'
     ],
     toolOutput: {
       "portfolio_id": "PORTFOLIO-MF-90214 (Wealth Advisory)",
       "total_aum_tracked": "$8,450,000",
-      "holdings_breakdown": [
-        { "fund_name": "Bhoomi Dynamic Equity Fund", "nav": "$142.80", "cagr_3yr": "+21.4%", "expense_ratio": "0.65%" },
-        { "fund_name": "BlueChip Large-Cap Index Fund", "nav": "$98.50", "cagr_3yr": "+16.8%", "expense_ratio": "0.20%" },
-        { "fund_name": "Ultra-Short Term Debt Fund", "nav": "$1,120.40", "cagr_3yr": "+7.2%", "expense_ratio": "0.35%" }
+      "forecast_horizon": "6-Month Growth Predictions & Forecast (till May-2027)",
+      "projected_high_performance_funds": [
+        {
+          "rank": 1,
+          "fund_name": "Nippon India Power & Infra Fund",
+          "category": "Sectoral / Infrastructure",
+          "forecast_6m": "+8% to +15% (till May-2027)",
+          "trend": "Strong Multi-Quarter Trend",
+          "growth_drivers": [
+            "Capex Expansion: Govt & private capex in renewable energy, grid modernization, transport",
+            "Core Holdings: Reliance, Larsen & Toubro, NTPC, Tata Power"
+          ],
+          "risk_factor": "Rich valuation multiples in mid/small-cap capital goods"
+        },
+        {
+          "rank": 2,
+          "fund_name": "Tata Digital India Fund",
+          "category": "Sectoral / Tech",
+          "forecast_6m": "+5% to +12% (till May-2027)",
+          "outlook": "High Growth Potential",
+          "growth_drivers": "AI infrastructure, cloud modernization, global digital transformation recovery"
+        },
+        {
+          "rank": 3,
+          "fund_name": "Franklin India Feeder - US Opportunities Fund",
+          "category": "Global / US Tech",
+          "forecast_6m": "+4% to +8% (till May-2027)",
+          "outlook": "Steady Moderate Growth",
+          "growth_drivers": "US megacap tech (AI infrastructure, cloud, digital transformation) tailwinds"
+        }
       ],
-      "rebalance_action": "REALLOCATE_15%_DEBT_TO_INDEX_EQUITY",
-      "projected_alpha_gain": "+2.85% Annualized",
+      "call_to_action": "Get in Touch for your queries",
       "risk_status": "OPTIMAL_SHARPE_RATIO (2.41)"
     },
     sampleResponses: {
       'default': {
         reasoning: [
-          { step: 'Portfolio Ingestion & NAV Sync', detail: 'Fetched real-time NAVs and 3-year trailing returns across active fund holdings.' },
-          { step: 'Risk-Adjusted Alpha Calculation', detail: 'Computed Sharpe Ratio (2.41) & Beta (0.88) relative to benchmark index.' },
-          { step: 'Autonomous Rebalance Execution', detail: 'Identified 15% surplus cash in debt -> Rebalanced into low-cost BlueChip Large-Cap Index Fund.' },
-          { step: 'Compliance & Tax Optimization', detail: 'Verified long-term capital gains (LTCG) threshold with zero exit load penalties.' }
+          { step: 'Multi-Factor Quantitative Filter', detail: 'Screened 450+ domestic & international funds on momentum, alpha, and sector tailwinds through May-2027.' },
+          { step: '6-Month Growth Projection Model', detail: 'Evaluated order books, industrial power demand, and enterprise AI capex cycles till May-2027.' },
+          { step: 'Holdings & Risk Audit', detail: 'Validated core holdings (Reliance, L&T, NTPC, Tata Power) and flagged mid-cap valuation multiples.' },
+          { step: 'Core Portfolio Synthesis', detail: 'Generated high-performance fund breakdown: #1 Nippon Power & Infra, #2 Tata Digital, #3 Franklin US.' }
         ],
-        text: `<strong>📊 Mutual Fund Portfolio & Tracking Summary:</strong><br><br>
-        • <strong>Portfolio ID:</strong> #MF-90214 (Wealth Advisory Client)<br>
-        • <strong>Total AUM:</strong> $8.45M across 14 Top-Tier Funds<br>
-        • <strong>Performance Trailing (3-Yr CAGR):</strong> <span style="color:#00FF87; font-weight:700;">+19.8%</span> (Outperforming benchmark by +3.4%)<br>
-        • <strong>Rebalance Recommendation:</strong> Shift 15% ultra-short debt into BlueChip Index to capture current equity upside.<br>
-        • <strong>Tax Impact:</strong> <span style="color:#00FF87;">Zero exit loads</span>, optimized for LTCG tax efficiency.<br>
-        • <strong>Automated Alerts:</strong> Monthly SIP schedule updated with automated NAV dip accumulation alerts.`,
-        actions: ['📈 Execute Portfolio Rebalance', '📑 Export Fund Factsheet PDF', '📊 Generate Client Statement']
+        text: `<strong>📈 Mutual Fund Tracker — 3 High Performance Potential Funds:</strong><br>
+        <em>6-Month Growth Predictions & Forecast (till May-2027)</em><br><br>
+        <strong>1. ⚡ Nippon India Power & Infra Fund (Sectoral / Infrastructure) — Strong Multi-Quarter Trend</strong><br>
+        • <strong>6-Month Forecast (till May-2027):</strong> <span style="color:#00FF87; font-weight:700;">Strong Growth (+8% to +15%)</span><br>
+        • <strong>Growth Drivers:</strong><br>
+        &nbsp;&nbsp;▫ <strong>Capex Expansion:</strong> Ongoing government & private capital expenditure in renewable energy, grid modernization, and transport infrastructure.<br>
+        &nbsp;&nbsp;▫ <strong>Core Holdings:</strong> Top portfolio holdings (<em>Reliance, Larsen & Toubro, NTPC, Tata Power</em>) benefit directly from domestic power demand and industrial activity.<br>
+        • <strong>Risk Factor:</strong> Rich valuation multiples in mid/small-cap capital goods names mean consolidation phases can occur.<br><br>
+        <strong>2. 🚀 Tata Digital India Fund (Sectoral / Tech) — High Growth Potential</strong><br>
+        • <strong>6-Month Forecast (till May-2027):</strong> <span style="color:#00FF87; font-weight:700;">High Growth Potential (+5% to +12%)</span><br>
+        • <strong>Growth Drivers:</strong> Enterprise AI spending acceleration, cloud modernization, and global digital transformation recovery.<br><br>
+        <strong>3. 🌐 Franklin India Feeder - US Opportunities Fund — Steady Moderate Growth</strong><br>
+        • <strong>6-Month Forecast (till May-2027):</strong> <span style="color:#00FF87; font-weight:700;">Positive (+4% to +8%)</span><br>
+        • <strong>Growth Drivers:</strong> Continued strength in US megacap tech (AI infrastructure, cloud, digital transformation) provides structural tailwinds over a 6-month horizon.<br><br>
+        📩 <strong>Get in Touch for your queries</strong>`,
+        actions: ['⚡ Focus on Nippon Infra', '🚀 Focus on Tata Digital', '🌐 Focus on Franklin US', '📩 Get in Touch for your queries']
       }
     }
   },
@@ -688,25 +722,129 @@ function updateTelemetry(state, latency, confidence) {
 function generateBhoomiOnlineResponse(query) {
   const q = query.toLowerCase().trim();
 
-  // 1. Mutual Fund Tracker & Financial Projects
-  if (q.includes('mutual fund') || q.includes('tracker') || q.includes('sip') || q.includes('portfolio') || q.includes('rebalance') || q.includes('cagr') || q.includes('wealth')) {
+  // 1a. Specific Fund: Nippon India Power & Infra Fund
+  if (q.includes('nippon') || (q.includes('power') && q.includes('infra')) || q.includes('reliance') || q.includes('larsen')) {
     return {
       reasoning: [
-        { step: 'Entity Recognition', detail: 'Identified entity: Featured Enterprise Project [Mutual Fund Tracker].' },
-        { step: 'Knowledge Retrieval', detail: 'Fetched portfolio rebalancing, SIP tracking, and wealth advisory specs.' },
-        { step: 'Accuracy Verification', detail: 'Confirmed 99.4% resolution rate metric and zero exit-load compliance.' }
+        { step: 'Fund Entity Disambiguation', detail: 'Identified Fund #1: Nippon India Power & Infra Fund (Sectoral / Infrastructure).' },
+        { step: '6-Month Projection Model', detail: 'Calculated +8% to +15% expected return trajectory through May-2027 based on multi-quarter industrial trend.' },
+        { step: 'Holdings & Risk Audit', detail: 'Validated core holdings: Reliance, L&T, NTPC, Tata Power; flagged mid-cap valuation multiples.' }
       ],
-      text: `<strong>📊 Mutual Fund Tracker — Featured Enterprise Project:</strong><br><br>
-      • <strong>Automated Portfolio Rebalancing:</strong> Monitors client asset allocation and executes tax-optimized index/equity rebalancing based on risk tolerances.<br>
-      • <strong>SIP Tracking & Analytics:</strong> Real-time tracking of systematic investment plans with automated NAV dip accumulation alerts.<br>
-      • <strong>Personalized Fund Recommendations:</strong> Multi-factor scoring analyzing Alpha, Beta, Sharpe ratio, and expense ratios.<br>
-      • <strong>Impact & Metrics:</strong> Delivered a <span style="color:#00FF87; font-weight:700;">99.4% resolution rate</span> and automated 85% of routine wealth advisor workflows.`,
-      actions: ['📈 Launch Mutual Fund Demo', '📑 Request Case Study PDF', '📩 Get in Touch']
+      text: `<strong>⚡ 1. Nippon India Power & Infra Fund (Sectoral / Infrastructure):</strong><br><br>
+      • <strong>Trend:</strong> Strong Multi-Quarter Trend<br>
+      • <strong>6-Month Forecast (till May-2027):</strong> <span style="color:#00FF87; font-weight:700;">Strong Growth (+8% to +15%)</span><br><br>
+      <strong>Growth Drivers:</strong><br>
+      • <strong>Capex Expansion:</strong> Ongoing government & private capital expenditure in renewable energy, grid modernization, and transport infrastructure.<br>
+      • <strong>Core Holdings:</strong> Top portfolio holdings (<em>Reliance, Larsen & Toubro, NTPC, Tata Power</em>) benefit directly from domestic power demand and industrial activity.<br><br>
+      ⚠️ <strong>Risk Factor:</strong> Rich valuation multiples in mid/small-cap capital goods names mean consolidation phases can occur.<br><br>
+      📩 <strong>Get in Touch for your queries</strong>`,
+      actions: ['🚀 Tata Digital India Fund', '🌐 Franklin US Opportunities', '📩 Get in Touch for your queries']
     };
   }
 
-  // 2. Overview / What is Bhoomi Solutions / Services
-  if (q.includes('bhoomi') || q.includes('what is') || q.includes('what do you do') || q.includes('about') || q.includes('overview') || q.includes('services') || q.includes('agentic')) {
+  // 1b. Specific Fund: Tata Digital India Fund
+  if (q.includes('tata digital') || (q.includes('tech') && q.includes('digital') && q.includes('fund'))) {
+    return {
+      reasoning: [
+        { step: 'Fund Entity Disambiguation', detail: 'Identified Fund #2: Tata Digital India Fund (Sectoral / Tech).' },
+        { step: 'Sector Momentum Scoring', detail: 'Evaluated enterprise AI capex and recovery in global IT services demand till May-2027.' }
+      ],
+      text: `<strong>🚀 2. Tata Digital India Fund (Sectoral / Tech):</strong><br><br>
+      • <strong>6-Month Forecast (till May-2027):</strong> <span style="color:#00FF87; font-weight:700;">High Growth Potential (+5% to +12%)</span><br>
+      • <strong>Category:</strong> Sectoral / Technology<br>
+      • <strong>Growth Drivers:</strong> Enterprise AI spending acceleration, cloud modernization, and global digital transformation recovery.<br>
+      • <strong>Key Portfolio Focus:</strong> Leading Indian IT leaders, enterprise SaaS providers, and global digital delivery giants.<br><br>
+      📩 <strong>Get in Touch for your queries</strong>`,
+      actions: ['⚡ Nippon India Power & Infra', '🌐 Franklin US Opportunities', '📩 Get in Touch for your queries']
+    };
+  }
+
+  // 1c. Specific Fund: Franklin India Feeder - US Opportunities Fund
+  if (q.includes('franklin') || q.includes('us opportunities') || (q.includes('feeder') && q.includes('us'))) {
+    return {
+      reasoning: [
+        { step: 'Fund Entity Disambiguation', detail: 'Identified Fund #3: Franklin India Feeder - US Opportunities Fund.' },
+        { step: 'Macro & Global Tech Analysis', detail: 'Evaluated US megacap hyperscalers, semiconductor leaders, and AI infrastructure demand till May-2027.' }
+      ],
+      text: `<strong>🌐 3. Franklin India Feeder - US Opportunities Fund:</strong><br><br>
+      • <strong>Outlook:</strong> Steady Moderate Growth<br>
+      • <strong>6-Month Forecast (till May-2027):</strong> <span style="color:#00FF87; font-weight:700;">Positive (+4% to +8%)</span><br><br>
+      • <strong>Growth Drivers:</strong> Continued strength in US megacap tech (AI infrastructure, cloud, digital transformation) provides structural tailwinds over a 6-month horizon.<br>
+      • <strong>Portfolio Highlights:</strong> Direct geographic exposure to global technology megacaps driving foundational AI models and high-performance computing.<br><br>
+      📩 <strong>Get in Touch for your queries</strong>`,
+      actions: ['⚡ Nippon India Power & Infra', '🚀 Tata Digital India Fund', '📩 Get in Touch for your queries']
+    };
+  }
+
+  // 1d. Mutual Fund Tracker & 3 High Performance Potential Funds (6-Month Growth Predictions & Forecast till May-2027)
+  if (q.includes('mutual fund') || q.includes('tracker') || q.includes('high performance') || q.includes('potential funds') || q.includes('prediction') || q.includes('forecast') || q.includes('6-month') || q.includes('6 month') || q.includes('may-2027') || q.includes('may 2027') || q.includes('sip') || q.includes('portfolio') || q.includes('rebalance') || q.includes('wealth') || q.includes('funds') || q.includes('cagr')) {
+    return {
+      reasoning: [
+        { step: 'Project Knowledge Retrieval', detail: 'Extracted Bhoomi Mutual Fund Tracker 6-Month Growth Predictions & Forecast model (horizon: till May-2027).' },
+        { step: 'Autonomous Quantitative Screening', detail: 'Ranked Fund 1: Nippon India Power & Infra Fund, Fund 2: Tata Digital India Fund, Fund 3: Franklin India Feeder.' },
+        { step: 'Holding & Tailwinds Verification', detail: 'Validated Capex cycle, domestic power demand, and US megacap AI infrastructure tailwinds.' }
+      ],
+      text: `<strong>📊 Mutual Fund Tracker — 3 High Performance Potential Funds:</strong><br>
+      <em>6-Month Growth Predictions & Forecast (till May-2027)</em><br><br>
+      <strong>1. ⚡ Nippon India Power & Infra Fund (Sectoral / Infrastructure) — Strong Multi-Quarter Trend</strong><br>
+      • <strong>6-Month Forecast (till May-2027):</strong> <span style="color:#00FF87; font-weight:700;">Strong Growth (+8% to +15%)</span><br>
+      • <strong>Growth Drivers:</strong><br>
+      &nbsp;&nbsp;▫ <strong>Capex Expansion:</strong> Ongoing government & private capital expenditure in renewable energy, grid modernization, and transport infrastructure.<br>
+      &nbsp;&nbsp;▫ <strong>Core Holdings:</strong> Top portfolio holdings (<em>Reliance, Larsen & Toubro, NTPC, Tata Power</em>) benefit directly from domestic power demand and industrial activity.<br>
+      • <strong>Risk Factor:</strong> Rich valuation multiples in mid/small-cap capital goods names mean consolidation phases can occur.<br><br>
+      <strong>2. 🚀 Tata Digital India Fund (Sectoral / Tech) — High Growth Potential</strong><br>
+      • <strong>6-Month Forecast (till May-2027):</strong> <span style="color:#00FF87; font-weight:700;">High Growth Potential (+5% to +12%)</span><br>
+      • <strong>Growth Drivers:</strong> Enterprise AI spending acceleration, cloud modernization, and global digital transformation recovery.<br><br>
+      <strong>3. 🌐 Franklin India Feeder - US Opportunities Fund — Steady Moderate Growth</strong><br>
+      • <strong>6-Month Forecast (till May-2027):</strong> <span style="color:#00FF87; font-weight:700;">Positive (+4% to +8%)</span><br>
+      • <strong>Growth Drivers:</strong> Continued strength in US megacap tech (AI infrastructure, cloud, digital transformation) provides structural tailwinds over a 6-month horizon.<br><br>
+      ✨ <em>Bhoomi’s Mutual Fund Tracker delivers a 99.4% resolution rate with automated portfolio rebalancing & real-time risk calculations.</em><br><br>
+      📩 <strong>Get in Touch for your queries</strong>`,
+      actions: ['⚡ Nippon India Power & Infra', '🚀 Tata Digital India Fund', '🌐 Franklin US Opportunities', '📩 Get in Touch for your queries']
+    };
+  }
+
+  // 2. Ask about Industries / 9 Enterprise Verticals
+  if (q.includes('ask abour industries') || q.includes('ask about industries') || q.includes('industr') || q.includes('sector') || q.includes('which industries') || q === 'industries' || q.includes('vertical')) {
+    return {
+      reasoning: [
+        { step: 'Industry Matrix Retrieval', detail: 'Retrieved all 9 core enterprise industry verticals from knowledge base.' },
+        { step: 'Interactive Sub-Tabs Generation', detail: 'Generated interactive sub-tabs for Bsecure, Customer Service, E-commerce, Healthcare, Finance, Manufacturing, Real Estate, Education, and Logistics.' }
+      ],
+      text: `<strong>🌐 Agentic AI for Every Industry (9 Enterprise Verticals):</strong><br>
+Select an industry below to see how our custom autonomous agents automate complex workflows:<br><br>
+1. 🛡️ <strong>Bsecure:</strong> Autonomous Cybersecurity & Trust Threat Defense<br>
+2. 🎧 <strong>Customer Service:</strong> Autonomous Dispute, Warranty & RMA Resolver<br>
+3. 🛒 <strong>E-commerce:</strong> Conversational Shopping Assistant & Live Inventory Sync<br>
+4. 🏥 <strong>Healthcare:</strong> ABDM-Compliant Clinical Triage & EHR Scheduling<br>
+5. 🏦 <strong>Finance:</strong> Mutual Fund Tracker, NAV Analytics & Wealth Intelligence<br>
+6. 🏭 <strong>Manufacturing:</strong> Predictive Maintenance & Supply Chain IoT Telemetry<br>
+7. 🏢 <strong>Real Estate:</strong> Autonomous Property Advisory & 24/7 Lead Qualification<br>
+8. 🎓 <strong>Education:</strong> 24/7 AI Tutoring & Adaptive Learning Companion<br>
+9. 🚚 <strong>Logistics:</strong> Dynamic Fleet Routing & Autonomous Dispatch Optimization<br><br>
+👉 <em>Click any industry sub-tab below to view its autonomous capabilities:</em>`,
+      actions: ['Bsecure', 'Customer Service', 'E-commerce', 'Healthcare', 'Finance', 'Manufacturing', 'Real Estate', 'Education', 'Logistics', '📩 Get in Touch for your queries']
+    };
+  }
+
+  // 3. Specific Industry: Bsecure (Cybersecurity & Threat Defense)
+  if (q === 'bsecure' || q.includes('bsecure') || q.includes('cyber') || q.includes('threat') || q.includes('zero-trust') || q.includes('zero trust') || q.includes('siem') || q.includes('soc')) {
+    return {
+      reasoning: [
+        { step: 'Domain Classification', detail: 'Matched Bsecure Enterprise Autonomous Cybersecurity & Threat Defense Agent.' },
+        { step: 'Threat Assessment', detail: 'Verified sub-second threat containment (< 0.5s) and 24/7 SIEM/SOC orchestration.' }
+      ],
+      text: `<strong>🛡️ Bsecure — Enterprise Autonomous Cybersecurity & Trust Threat Defense:</strong><br><br>
+      • <strong>24/7 Zero-Trust Monitoring:</strong> Continuous real-time perimeter, network, and endpoint threat inspection.<br>
+      • <strong>Autonomous Threat Containment:</strong> Sub-second (< 0.5s) automated IP isolation, anomalous payload quarantine, and SOC playbook execution.<br>
+      • <strong>Enterprise Compliance:</strong> Built-in immutable logging for SOC 2, ISO 27001, and zero-leakage security guardrails.<br>
+      • <strong>Impact & Metrics:</strong> <span style="color:#00FF87; font-weight:700;">99.99% Threat Containment</span> with autonomous zero-day exploit shielding.`,
+      actions: ['💬 Ask about Industries', '🛡️ Launch Bsecure Demo', '📩 Get in Touch for your queries']
+    };
+  }
+
+  // 4. Overview / What is Bhoomi Solutions / Services
+  if ((q.includes('bhoomi') || q.includes('what is') || q.includes('what do you do') || q.includes('about') || q.includes('overview') || q.includes('services') || q.includes('agentic')) && !q.includes('industr')) {
     return {
       reasoning: [
         { step: 'Intent Parsing', detail: 'Classified general inquiry: Bhoomi Solutions Ltd firm overview.' },
@@ -718,11 +856,11 @@ function generateBhoomiOnlineResponse(query) {
       • <strong>Autonomous:</strong> Our AI agents think, reason, and deliver real-world outcomes independently.<br>
       • <strong>Scalable:</strong> Built to scale across industries, ERPs, CRMs, and business functions.<br>
       • <strong>Reliable:</strong> Customized to your requirements, and accurately aligned with your business goals.`,
-      actions: ['🚀 Explore Solutions', '💬 Ask about Industries', '📩 Get in Touch']
+      actions: ['🚀 Explore Solutions', '💬 Ask about Industries', '📩 Get in Touch for your queries']
     };
   }
 
-  // 3. Cognitive Framework: Understand, Reason, Act, Learn
+  // 5. Cognitive Framework: Understand, Reason, Act, Learn
   if (q.includes('understand') || q.includes('reason') || q.includes('act') || q.includes('learn') || q.includes('how it works') || q.includes('how do agents work') || q.includes('framework')) {
     return {
       reasoning: [
@@ -734,11 +872,11 @@ function generateBhoomiOnlineResponse(query) {
       2. <strong>Reason:</strong> Multi-step planning, decision-making, and real-time knowledge retrieval (Vector RAG).<br>
       3. <strong>Act:</strong> Executes autonomous API calls, CRM updates, database queries, and document generation.<br>
       4. <strong>Learn:</strong> Continuous improvement through multi-turn interaction loops and reinforcement feedback.`,
-      actions: ['🎬 Architecture Tour', '🤖 View Live Agents', '📩 Get in Touch']
+      actions: ['🎬 Architecture Tour', '🤖 View Live Agents', '📩 Get in Touch for your queries']
     };
   }
 
-  // 4. Contact & Inquiries
+  // 6. Contact & Inquiries
   if (q.includes('contact') || q.includes('email') || q.includes('reach') || q.includes('rajesh') || q.includes('shetty') || q.includes('phone') || q.includes('get in touch') || q.includes('support')) {
     return {
       reasoning: [
@@ -753,27 +891,7 @@ function generateBhoomiOnlineResponse(query) {
     };
   }
 
-  // 5. Ask about Industries / Supported Industries Overview
-  if (q.includes('ask abour industries') || q.includes('ask about industries') || q.includes('industr') || q.includes('sector') || q.includes('which industries') || q === 'industries') {
-    return {
-      reasoning: [
-        { step: 'Industry Matrix Retrieval', detail: 'Retrieved 8 core enterprise industry verticals from knowledge base.' }
-      ],
-      text: `<strong>Agentic AI for Every Industry</strong><br>
-Select an industry below to see how our custom autonomous agents automate complex workflows.<br><br>
-• Customer Service<br>
-• E-commerce<br>
-• Healthcare<br>
-• Finance<br>
-• Manufacturing<br>
-• Real Estate<br>
-• Education<br>
-• Logistics`,
-      actions: ['Customer Service', 'E-commerce', 'Healthcare', 'Finance', 'Manufacturing', 'Real Estate', 'Education', 'Logistics', '📩 Get in Touch']
-    };
-  }
-
-  // 6. Specific Industry: Customer Service
+  // 7. Specific Industry: Customer Service
   if (q === 'customer service' || q.includes('customer support') || q.includes('customer service') || q.includes('crm')) {
     return {
       reasoning: [
@@ -784,11 +902,11 @@ Select an industry below to see how our custom autonomous agents automate comple
       • <strong>Autonomous Resolution:</strong> 24/7 autonomous handling of customer inquiries, warranty verification, and RMA processing.<br>
       • <strong>CRM & Helpdesk Sync:</strong> Native bi-directional integration with Zendesk, Salesforce, and Freshdesk.<br>
       • <strong>Performance:</strong> Achieves a <span style="color:#00FF87; font-weight:700;">98% CSAT</span> and sub-minute ticket turnaround.`,
-      actions: ['💬 Ask about Industries', '📩 Get in Touch']
+      actions: ['💬 Ask about Industries', '📩 Get in Touch for your queries']
     };
   }
 
-  // 7. Specific Industry: E-Commerce
+  // 8. Specific Industry: E-Commerce
   if (q === 'e-commerce' || q === 'ecommerce' || q.includes('e-commerce') || q.includes('ecommerce') || q.includes('shop') || q.includes('cart') || q.includes('retail')) {
     return {
       reasoning: [
@@ -799,11 +917,11 @@ Select an industry below to see how our custom autonomous agents automate comple
       • <strong>Personalized Recommendations:</strong> AI guides shoppers based on preferences, climate, budget, and sizing.<br>
       • <strong>Real-time Stock & Sync:</strong> Instant warehouse inventory queries and 1-click cart addition.<br>
       • <strong>Results:</strong> Drives an average of <span style="color:#00FF87; font-weight:700;">+34% revenue uplift</span> and automated returns handling.`,
-      actions: ['💬 Ask about Industries', '📩 Get in Touch']
+      actions: ['💬 Ask about Industries', '📩 Get in Touch for your queries']
     };
   }
 
-  // 8. Specific Industry: Healthcare
+  // 9. Specific Industry: Healthcare
   if (q === 'healthcare' || q.includes('health') || q.includes('hospital') || q.includes('patient') || q.includes('clinical') || q.includes('doctor') || q.includes('triage') || q.includes('hipaa') || q.includes('abdm')) {
     return {
       reasoning: [
@@ -814,25 +932,25 @@ Select an industry below to see how our custom autonomous agents automate comple
       • <strong>ABDM / HIPAA Compliant:</strong> Zero-retention encrypted pipelines for patient data intake.<br>
       • <strong>Clinical Triage:</strong> Automated Emergency Severity Index (ESI) classification and preliminary assessment.<br>
       • <strong>EHR Synchronized:</strong> Connects directly with Epic and Cerner for doctor appointment scheduling and alerts.`,
-      actions: ['💬 Ask about Industries', '📩 Get in Touch']
+      actions: ['💬 Ask about Industries', '📩 Get in Touch for your queries']
     };
   }
 
-  // 9. Specific Industry: Finance
+  // 10. Specific Industry: Finance
   if (q === 'finance' || q.includes('banking') || q.includes('underwriting') || q.includes('fraud')) {
     return {
       reasoning: [
         { step: 'Domain Classification', detail: 'Matched Finance & Banking Agentic AI.' }
       ],
       text: `<strong>🏦 Finance & Banking Agentic AI:</strong><br><br>
-      • <strong>Mutual Fund Tracker:</strong> Real-time NAV tracking, portfolio rebalancing notifications, and SIP performance analytics.<br>
+      • <strong>Mutual Fund Tracker:</strong> Real-time NAV tracking, 6-month growth predictions (till May-2027), and SIP performance analytics.<br>
       • <strong>Automated Underwriting:</strong> Real-time risk scoring, transaction analysis, and fraud detection.<br>
       • <strong>Results:</strong> Delivers <span style="color:#00FF87; font-weight:700;">99.4% resolution accuracy</span> and 85% risk reduction.`,
-      actions: ['💬 Ask about Industries', '📩 Get in Touch']
+      actions: ['Tell me about the Mutual Fund Tracker', '💬 Ask about Industries', '📩 Get in Touch for your queries']
     };
   }
 
-  // 10. Specific Industry: Manufacturing
+  // 11. Specific Industry: Manufacturing
   if (q === 'manufacturing' || q.includes('manufactur') || q.includes('factory')) {
     return {
       reasoning: [
@@ -842,11 +960,11 @@ Select an industry below to see how our custom autonomous agents automate comple
       • <strong>Predictive Maintenance:</strong> Real-time IoT sensor telemetry monitoring and anomaly detection.<br>
       • <strong>Autonomous Procurement:</strong> Automatically triggers purchase orders for critical replacement components.<br>
       • <strong>Impact:</strong> Reduces unexpected factory equipment downtime by <span style="color:#00FF87; font-weight:700;">45%</span>.`,
-      actions: ['💬 Ask about Industries', '📩 Get in Touch']
+      actions: ['💬 Ask about Industries', '📩 Get in Touch for your queries']
     };
   }
 
-  // 11. Specific Industry: Real Estate
+  // 12. Specific Industry: Real Estate
   if (q === 'real estate' || q.includes('real estate') || q.includes('property')) {
     return {
       reasoning: [
@@ -856,11 +974,11 @@ Select an industry below to see how our custom autonomous agents automate comple
       • <strong>Instant Lead Qualification:</strong> Automates property inquiries and qualifies buyer budgets 24/7.<br>
       • <strong>Calendar Sync:</strong> Schedules private agent tours directly in CRM calendar within &lt; 1 minute.<br>
       • <strong>Impact:</strong> Delivers instant buyer engagement with <span style="color:#00FF87; font-weight:700;">&lt; 1 min response time</span>.`,
-      actions: ['💬 Ask about Industries', '📩 Get in Touch']
+      actions: ['💬 Ask about Industries', '📩 Get in Touch for your queries']
     };
   }
 
-  // 12. Specific Industry: Education
+  // 13. Specific Industry: Education
   if (q === 'education' || q.includes('education') || q.includes('tutor') || q.includes('student') || q.includes('learning')) {
     return {
       reasoning: [
@@ -870,11 +988,11 @@ Select an industry below to see how our custom autonomous agents automate comple
       • <strong>24/7 AI Tutoring:</strong> Adaptive learning companion that answers student queries across coursework.<br>
       • <strong>LMS Sync:</strong> Automatically generates quizzes, delivers personalized feedback, and syncs with Canvas/Blackboard.<br>
       • <strong>Impact:</strong> Increases student engagement and concept mastery to <span style="color:#00FF87; font-weight:700;">92%</span>.`,
-      actions: ['💬 Ask about Industries', '📩 Get in Touch']
+      actions: ['💬 Ask about Industries', '📩 Get in Touch for your queries']
     };
   }
 
-  // 13. Specific Industry: Logistics
+  // 14. Specific Industry: Logistics
   if (q === 'logistics' || q.includes('logistic') || q.includes('fleet') || q.includes('supply chain') || q.includes('dispatch')) {
     return {
       reasoning: [
@@ -884,7 +1002,7 @@ Select an industry below to see how our custom autonomous agents automate comple
       • <strong>Dynamic Routing:</strong> Real-time weather, traffic, and multi-vendor route optimization.<br>
       • <strong>Autonomous Dispatch:</strong> Driver task allocation and live customer package ETA tracking alerts.<br>
       • <strong>Impact:</strong> Delivers a <span style="color:#00FF87; font-weight:700;">40% speed gain</span> and significant fuel cost reduction.`,
-      actions: ['💬 Ask about Industries', '📩 Get in Touch']
+      actions: ['💬 Ask about Industries', '📩 Get in Touch for your queries']
     };
   }
 
@@ -993,7 +1111,8 @@ function executePromptWorkflow(userQuery) {
       </button>
       ${responseData.actions.map(act => {
         if (act.includes('Get in Touch')) {
-          return `<button class="agent-action-btn" onclick="bookEnterpriseDemoFromModal()"><i class="fa-solid fa-paper-plane"></i> Get in Touch</button>`;
+          const btnLabel = act.replace(/^[^\w\s]+/, '').trim();
+          return `<button class="agent-action-btn" onclick="bookEnterpriseDemoFromModal()"><i class="fa-solid fa-paper-plane"></i> ${btnLabel || 'Get in Touch'}</button>`;
         }
         return `<button class="agent-action-btn" onclick="executePresetPrompt('${escapePrompt(act)}')"><i class="fa-solid fa-check"></i> ${act}</button>`;
       }).join('')}
@@ -1432,16 +1551,17 @@ const caseStudyData = {
     tag: 'FINANCIAL SERVICES',
     title: 'Mutual Fund Tracker & Wealth Advisor Agent',
     client: 'Global Asset Management & Wealth Fund Group',
-    challenge: 'Processing high-volume client SIP inquiries, portfolio rebalancing requests, and fund analytics across 100,000+ accounts with zero latency.',
-    solution: 'Bhoomi Solutions deployed an autonomous AI Wealth Advisor Agent with real-time portfolio data retrieval, automated SIP tracking, and SOC 2 compliant security.',
+    challenge: 'Processing high-volume client SIP inquiries, 6-month growth predictions, portfolio rebalancing requests, and fund analytics across 100,000+ accounts with zero latency.',
+    solution: 'Bhoomi Solutions deployed an autonomous AI Wealth Advisor Agent with real-time portfolio data retrieval, automated 6-month high-performance fund forecasting (Tata Digital, Nippon Power & Infra, Franklin US Tech), and SOC 2 compliant security.',
     metrics: [
       { val: '99.4%', label: 'Automated Resolution Rate' },
       { val: '< 2 sec', label: 'Response Latency' },
       { val: '100k+', label: 'Accounts Managed' }
     ],
     highlights: [
+      '6-Month growth predictions & high-performance fund forecasting',
       'Automated Mutual Fund portfolio rebalancing notifications',
-      'SIP tracking & personalized fund recommendations',
+      'SIP tracking, Capex driver analytics & personalized fund scoring',
       'Encrypted zero-leakage financial data guardrails'
     ]
   },
