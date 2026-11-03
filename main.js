@@ -843,8 +843,26 @@ Select an industry below to see how our custom autonomous agents automate comple
     };
   }
 
-  // 4. Overview / What is Bhoomi Solutions / Services
-  if ((q.includes('bhoomi') || q.includes('what is') || q.includes('what do you do') || q.includes('about') || q.includes('overview') || q.includes('services') || q.includes('agentic')) && !q.includes('industr')) {
+  // 4. Tab 4: Contact & Inquiries (How can I get in touch with Bhoomi Solutions?)
+  if (q.includes('touch') || q.includes('contact') || q.includes('reach') || q.includes('enquir') || q.includes('inquir') || q.includes('rajesh') || q.includes('shetty') || q.includes('phone') || q.includes('get in touch') || q.includes('support')) {
+    return {
+      reasoning: [
+        { step: 'Contact Intent Match', detail: 'Identified corporate contact & inquiry request for Bhoomi Solutions Ltd.' },
+        { step: 'Contact Coordinates Retrieval', detail: 'Retrieved official website, representative email, and online Get in Touch inquiry form.' }
+      ],
+      text: `<strong>📩 Connect with Bhoomi Solutions Ltd:</strong><br><br>
+You can reach our team directly using the contact details below, or click on <strong>Get in Touch</strong> to submit your enquiry:<br><br>
+• <strong>Company:</strong> Bhoomi Solutions Ltd<br>
+• <strong>Official Website:</strong> <a href="https://www.bhoomisolutionsltd.com" target="_blank" style="color:var(--cyan-accent); font-weight:600;">www.bhoomisolutionsltd.com</a><br>
+• <strong>Email Inquiries:</strong> <a href="mailto:rajeshshetty@bhoomisolutionsltd.com" style="color:var(--cyan-accent); font-weight:600;">rajeshshetty@bhoomisolutionsltd.com</a><br>
+• <strong>Online Form:</strong> Click on <strong>Get in Touch</strong> below to submit your project requirements directly to our engineering team!<br><br>
+👉 <em>We respond to all enterprise enquiries within 24 business hours.</em>`,
+      actions: ['📩 Get in Touch', '💬 Ask another question']
+    };
+  }
+
+  // 5. Tab 1: Overview / What does Bhoomi Solutions do / How does Agentic AI work
+  if ((q.includes('bhoomi') || q.includes('what is') || q.includes('what do you do') || q.includes('about') || q.includes('overview') || q.includes('services') || q.includes('agentic')) && !q.includes('industr') && !q.includes('touch') && !q.includes('contact') && !q.includes('fund')) {
     return {
       reasoning: [
         { step: 'Intent Parsing', detail: 'Classified general inquiry: Bhoomi Solutions Ltd firm overview.' },
@@ -860,7 +878,7 @@ Select an industry below to see how our custom autonomous agents automate comple
     };
   }
 
-  // 5. Cognitive Framework: Understand, Reason, Act, Learn
+  // 6. Cognitive Framework: Understand, Reason, Act, Learn
   if (q.includes('understand') || q.includes('reason') || q.includes('act') || q.includes('learn') || q.includes('how it works') || q.includes('how do agents work') || q.includes('framework')) {
     return {
       reasoning: [
@@ -873,21 +891,6 @@ Select an industry below to see how our custom autonomous agents automate comple
       3. <strong>Act:</strong> Executes autonomous API calls, CRM updates, database queries, and document generation.<br>
       4. <strong>Learn:</strong> Continuous improvement through multi-turn interaction loops and reinforcement feedback.`,
       actions: ['🎬 Architecture Tour', '🤖 View Live Agents', '📩 Get in Touch for your queries']
-    };
-  }
-
-  // 6. Contact & Inquiries
-  if (q.includes('contact') || q.includes('email') || q.includes('reach') || q.includes('rajesh') || q.includes('shetty') || q.includes('phone') || q.includes('get in touch') || q.includes('support')) {
-    return {
-      reasoning: [
-        { step: 'Intent Match', detail: 'Matched intent: Official contact & representative information.' },
-        { step: 'Contact Info Fetch', detail: 'Retrieved verified email and website coordinates.' }
-      ],
-      text: `<strong>📩 Connect with Bhoomi Solutions Ltd:</strong><br><br>
-      • <strong>Official Website:</strong> <a href="https://www.bhoomisolutionsltd.com" style="color:var(--cyan-accent); font-weight:600;">www.bhoomisolutionsltd.com</a><br>
-      • <strong>Direct Email:</strong> <a href="mailto:rajeshshetty@bhoomisolutionsltd.com" style="color:var(--cyan-accent); font-weight:600;">rajeshshetty@bhoomisolutionsltd.com</a><br>
-      • <strong>Contact Form:</strong> You can submit your requirements directly using the <strong>Get in Touch</strong> form on this page!`,
-      actions: ['📩 Scroll to Get in Touch', '💬 Ask another question']
     };
   }
 
@@ -1020,7 +1023,43 @@ Select an industry below to see how our custom autonomous agents automate comple
     };
   }
 
-  // 15. Special Greeting: Grandma's Birthday (13-Oct-2026)
+  // 15a. Special Festive Greeting: Diwali (6th Nov - 12th Nov 2026)
+  if (q.includes('diwali') || q.includes('deepavali') || q.includes('deepawali')) {
+    return {
+      reasoning: [
+        { step: 'Festive Recognition', detail: 'Identified festival celebration: Happy Diwali 2026 (6th Nov - 12th Nov).' }
+      ],
+      text: `🪔 <strong>Happy Diwali & Deepavali Greetings!</strong> ✨🎆<br><br>
+      The Bhoomi Solutions family extends warm and radiant wishes for a joyous, prosperous, and illuminated Diwali! May the festival of lights bring triumph, peace, and abundance to you and your enterprise! 🪔🌟`,
+      actions: ['🪔 Happy Diwali', '🚀 Explore Solutions', '📩 Get in Touch']
+    };
+  }
+
+  // 15b. Special Milestone: Children's Day (14th Nov 2026)
+  if (q.includes("children's day") || q.includes("childrens day") || q.includes('children day')) {
+    return {
+      reasoning: [
+        { step: 'Celebration Recognition', detail: "Identified national celebration: Happy Children's Day (14th Nov 2026)." }
+      ],
+      text: `🎈 <strong>Happy Children's Day!</strong> 🌟🧸<br><br>
+      Celebrating the pure curiosity, creativity, and boundless imagination of children who will shape tomorrow's technology and world! Happy Children's Day from Bhoomi Solutions! 🚀✨`,
+      actions: ['🎈 Happy Children\'s Day', '🚀 Explore Solutions', '📩 Get in Touch']
+    };
+  }
+
+  // 15c. Special Celebration: Happy Birthday to Siri (20th Nov 2026)
+  if (q.includes('siri')) {
+    return {
+      reasoning: [
+        { step: 'Celebration Recognition', detail: 'Identified special birthday milestone: Happy Birthday to Siri (20th Nov 2026)!' }
+      ],
+      text: `🎂 <strong>Happy Birthday to Siri!</strong> 💐🎉💖<br><br>
+      The entire Bhoomi Solutions family extends heartfelt greetings and brightest blessings to Siri on her special day! Wishing her boundless joy, good health, laughter, and dazzling success! 🥳✨🎁`,
+      actions: ['🎂 Happy Birthday Siri', '🚀 Explore Solutions', '📩 Get in Touch']
+    };
+  }
+
+  // 15d. Special Greeting: Grandma's Birthday (13-Oct-2026)
   if (q.includes('grandma') || q.includes('birthday')) {
     return {
       reasoning: [
@@ -1058,12 +1097,22 @@ function handleDemoPromptSubmit(event) {
   executePromptWorkflow(userText);
 }
 
+let contactScrollTimeout = null;
+
 function executePresetPrompt(promptText) {
+  if (contactScrollTimeout) {
+    clearTimeout(contactScrollTimeout);
+    contactScrollTimeout = null;
+  }
   unlockMobileAudio();
   executePromptWorkflow(promptText);
 }
 
 function executePromptWorkflow(userQuery) {
+  if (contactScrollTimeout) {
+    clearTimeout(contactScrollTimeout);
+    contactScrollTimeout = null;
+  }
   const chatMessages = document.getElementById('demo-chat-messages');
   if (!chatMessages) return;
 
@@ -1110,6 +1159,10 @@ function executePromptWorkflow(userQuery) {
         <i class="fa-solid fa-volume-high"></i> Listen
       </button>
       ${responseData.actions.map(act => {
+        if (act.includes('Contact Inquiry Form') || act.includes('Contact Form') || act.includes('Go to Get in Touch Form')) {
+          const btnLabel = act.replace(/^[^\w\s]+/, '').trim();
+          return `<button class="agent-action-btn" onclick="scrollToContactFormFromModal()"><i class="fa-solid fa-paper-plane"></i> ${btnLabel || 'Open Contact Inquiry Form'}</button>`;
+        }
         if (act.includes('Get in Touch')) {
           const btnLabel = act.replace(/^[^\w\s]+/, '').trim();
           return `<button class="agent-action-btn" onclick="bookEnterpriseDemoFromModal()"><i class="fa-solid fa-paper-plane"></i> ${btnLabel || 'Get in Touch'}</button>`;
@@ -1141,6 +1194,14 @@ function executePromptWorkflow(userQuery) {
     }
     if (actionRow) {
       actionRow.style.display = 'flex';
+    }
+
+    if (responseData.autoScrollToContact) {
+      if (contactScrollTimeout) clearTimeout(contactScrollTimeout);
+      contactScrollTimeout = setTimeout(() => {
+        scrollToContactFormFromModal();
+        contactScrollTimeout = null;
+      }, 1000);
     }
 
     chatMessages.scrollTop = chatMessages.scrollHeight;
@@ -1770,26 +1831,66 @@ function initFestiveRibbon() {
   const dussehraStart = new Date(2026, 9, 20, 0, 0, 0);
   const dussehraEnd = new Date(2026, 9, 20, 23, 59, 59);
 
-  // URL query parameter preview override: ?ribbon=birthday OR ?ribbon=grandma OR ?ribbon=navratri OR ?ribbon=dussehra
+  // Diwali 2026: 06-Nov-2026 00:00:00 to 12-Nov-2026 23:59:59
+  const diwaliStart = new Date(2026, 10, 6, 0, 0, 0); // Month 10 is November (0-indexed)
+  const diwaliEnd = new Date(2026, 10, 12, 23, 59, 59);
+
+  // Children's Day 2026: 14-Nov-2026 00:00:00 to 14-Nov-2026 23:59:59
+  const childrensDayStart = new Date(2026, 10, 14, 0, 0, 0);
+  const childrensDayEnd = new Date(2026, 10, 14, 23, 59, 59);
+
+  // Siri's Birthday 2026: 20-Nov-2026 00:00:00 to 20-Nov-2026 23:59:59
+  const siriBirthdayStart = new Date(2026, 10, 20, 0, 0, 0);
+  const siriBirthdayEnd = new Date(2026, 10, 20, 23, 59, 59);
+
+  // URL query parameter preview override: ?ribbon=diwali OR ?ribbon=children OR ?ribbon=siri OR ?ribbon=birthday OR ?ribbon=navratri OR ?ribbon=dussehra
   const urlParams = new URLSearchParams(window.location.search);
   const ribbonOverride = (urlParams.get('ribbon') || urlParams.get('festive') || '').toLowerCase();
 
   let activeConfig = null;
 
-  // 1. Grandma's Birthday (13th October 2026) - Celebrated today alongside Navratri
-  if (ribbonOverride === 'birthday' || ribbonOverride === 'grandma' || (now >= grandmaBirthdayStart && now <= grandmaBirthdayEnd)) {
+  // 1. Siri's Birthday (20th November 2026)
+  if (ribbonOverride === 'siri' || ribbonOverride === 'siribirthday' || (now >= siriBirthdayStart && now <= siriBirthdayEnd)) {
+    activeConfig = {
+      themeClass: 'siri-birthday-theme',
+      badgeText: '🎂 SPECIAL CELEBRATION',
+      message: '🎂 Happy Birthday to Siri! 💐 Wishing you love, laughter, joy & great success! 💖✨🎉'
+    };
+  }
+  // 2. Children's Day (14th November 2026)
+  else if (ribbonOverride === 'children' || ribbonOverride === 'childrensday' || ribbonOverride === 'children day' || (now >= childrensDayStart && now <= childrensDayEnd)) {
+    activeConfig = {
+      themeClass: 'childrens-day-theme',
+      badgeText: "🎈 CHILDREN'S DAY",
+      message: "🎈 Happy Children's Day! Celebrating the curiosity and boundless potential of our future leaders! 🌟🚀"
+    };
+  }
+  // 3. Diwali Festival (6th Nov - 12th Nov 2026)
+  else if (ribbonOverride === 'diwali' || ribbonOverride === 'deepavali' || ribbonOverride === 'deepawali' || (now >= diwaliStart && now <= diwaliEnd)) {
+    activeConfig = {
+      themeClass: 'diwali-theme',
+      badgeText: '🪔 HAPPY DIWALI',
+      message: '🪔 Happy Diwali! Wishing you and your family joy, prosperity, and light! ✨🎆'
+    };
+  }
+  // 4. Grandma's Birthday (13th October 2026)
+  else if (ribbonOverride === 'birthday' || ribbonOverride === 'grandma' || (now >= grandmaBirthdayStart && now <= grandmaBirthdayEnd)) {
     activeConfig = {
       themeClass: 'birthday-theme',
       badgeText: '🎂 SPECIAL CELEBRATION',
       message: '🎂 Happy Birthday Grandma! 💐 Wishing you love, health & happiness! 💖 | 🌸 Happy Navratri! 🚩'
     };
-  } else if (ribbonOverride === 'navratri' || (now >= navratriStart && now <= navratriEnd)) {
+  }
+  // 5. Navratri (11th Oct - 19th Oct 2026)
+  else if (ribbonOverride === 'navratri' || (now >= navratriStart && now <= navratriEnd)) {
     activeConfig = {
       themeClass: 'navratri-theme',
       badgeText: '🌸 HAPPY NAVRATRI',
       message: '🌸 Happy Navratri! May Goddess Durga bless you with wisdom, strength & prosperity! 🚩'
     };
-  } else if (ribbonOverride === 'dussehra' || (now >= dussehraStart && now <= dussehraEnd)) {
+  }
+  // 6. Dussehra (20th Oct 2026)
+  else if (ribbonOverride === 'dussehra' || (now >= dussehraStart && now <= dussehraEnd)) {
     activeConfig = {
       themeClass: 'dussehra-theme',
       badgeText: '🏹 VIJAYADASHAMI / DUSSEHRA',
@@ -1888,6 +1989,32 @@ function openContactForm(industryName) {
     contactSection.scrollIntoView({ behavior: 'smooth' });
   }
   trackConversionEvent('contact_form_focused', { industry: industryName || 'General' });
+}
+
+function scrollToContactFormFromModal(customMsg) {
+  if (contactScrollTimeout) {
+    clearTimeout(contactScrollTimeout);
+    contactScrollTimeout = null;
+  }
+  closeDemoModal();
+  const contactSection = document.getElementById('contact');
+  const nameField = document.getElementById('name');
+  const msgField = document.getElementById('message');
+  
+  if (msgField && !msgField.value) {
+    msgField.value = customMsg || 'Hi Bhoomi Solutions team, I would like to get in touch regarding your Agentic AI solutions.';
+  }
+  if (contactSection) {
+    contactSection.scrollIntoView({ behavior: 'smooth' });
+  }
+  if (nameField) {
+    setTimeout(() => {
+      try {
+        nameField.focus({ preventScroll: true });
+      } catch (e) {}
+    }, 600);
+  }
+  trackConversionEvent('contact_inquiry_opened', { source: 'bhoomi_online_tab_4' });
 }
 
 function bookEnterpriseDemoFromModal() {

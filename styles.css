@@ -1830,6 +1830,24 @@ textarea.form-control {
   border-bottom: 2.5px solid #FFD700;
 }
 
+.festive-ribbon.diwali-theme {
+  background: linear-gradient(90deg, #590209 0%, #D83100 25%, #FF7A00 50%, #FFB703 75%, #590209 100%);
+  border-bottom: 2.5px solid #FFD700;
+  box-shadow: 0 4px 20px rgba(255, 183, 3, 0.35);
+}
+
+.festive-ribbon.childrens-day-theme {
+  background: linear-gradient(90deg, #1A508B 0%, #0098A6 25%, #48C774 50%, #FFB703 75%, #E83A59 100%);
+  border-bottom: 2.5px solid #00F2FE;
+  box-shadow: 0 4px 20px rgba(0, 242, 254, 0.3);
+}
+
+.festive-ribbon.siri-birthday-theme {
+  background: linear-gradient(90deg, #8A2387 0%, #E94057 50%, #F27121 100%);
+  border-bottom: 2.5px solid #FFD700;
+  box-shadow: 0 4px 20px rgba(233, 64, 87, 0.35);
+}
+
 .festive-ribbon.ganesh-chaturthi-theme {
   background: linear-gradient(90deg, #4A000B 0%, #8E0E00 25%, #F00B51 50%, #FF8008 75%, #4A000B 100%);
   border-bottom: 2.5px solid #FFD700;
